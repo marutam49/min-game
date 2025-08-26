@@ -5,21 +5,22 @@ using Random = UnityEngine.Random;
 //モグラのスポーン後の処理
 public class MoleManager : MonoBehaviour
 {
-    bool isItem = false;
+    [SerializeField] WaveManager waveManager;
+    //bool isItem = false;
 
     float despawnTime = 3.0f;
-    
+
     void Start()
     {
-        //アイテムかどうかの判定
-        if (Random.Range(0, 2) == 1)
-        {
-            isItem = true;
-        }
-        if (isItem)
-        {
-            gameObject.GetComponent<Renderer>().material.color = Color.green;
-        }
+        // //アイテムかどうかの判定
+        // if (Random.Range(0, 2) == 1)
+        // {
+        //     isItem = true;
+        // }
+        // if (isItem)
+        // {
+        //     gameObject.GetComponent<Renderer>().material.color = Color.green;
+        // }
 
         Destroy(gameObject, despawnTime);
     }
@@ -39,13 +40,17 @@ public class MoleManager : MonoBehaviour
             {
                 gameObject.GetComponent<Renderer>().material.color = Color.red;
                 ScoreManager.score += 5;
+                WaveManager.enemyBeatNumber += 1;
+                
+                
+                
                 Destroy(gameObject, 0.1f);
 
-                if (isItem)
-                {
-                    hitRangeManager.hitRange += 0.01f;
-                    hitRangeManager.firirngInterval -= 0.01f;
-                }
+                // if (isItem)
+                // {
+                //     hitRangeManager.hitRange += 0.01f;
+                //     hitRangeManager.firirngInterval -= 0.01f;
+                // }
 
                 enabled = false;
             }
