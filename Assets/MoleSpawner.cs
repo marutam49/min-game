@@ -6,7 +6,7 @@ using Vector3 = UnityEngine.Vector3;
 using Quaternion = UnityEngine.Quaternion;
 using UnityEngine.SocialPlatforms.Impl;
 
-//モグラをスポーンさせる
+//モグラをスポーンさせる、モグラの種類と出現時のステータスの管理
 public class MoleSpawner : MonoBehaviour
 {
 
@@ -26,6 +26,7 @@ public class MoleSpawner : MonoBehaviour
 
     void Start()
     {
+        originObject.GetComponent<MoleManager>().waveManager = this.GetComponent<WaveManager>();
         WaveUpdate();
         StartCoroutine(Spawn());
     }
@@ -41,9 +42,6 @@ public class MoleSpawner : MonoBehaviour
     {
         while (true)
         {
-            //spawnInterval = 1.0f / (ScoreManager.score / 20 + 1);
-            //numberSpawnAtOneTime = 1;
-
             yield return new WaitForSeconds(spawnInterval);
 
             for (int i = 0; i < numberSpawnAtOneTime; i++)
@@ -58,6 +56,6 @@ public class MoleSpawner : MonoBehaviour
     public void WaveUpdate()
     {
         spawnInterval = waveFirstState[WaveManager.wave - 1, 1];
-        numberSpawnAtOneTime = (int)waveFirstState[WaveManager.wave - 1, 2];        
+        numberSpawnAtOneTime = (int)waveFirstState[WaveManager.wave - 1, 2];
     }
 }

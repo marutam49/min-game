@@ -66,5 +66,5 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj"
     },
-    "dotnet.defaultSolution": "min-game.sln"
+    "dotnet.defaultSolution": "Whack-a-Mole_arupha.sln"
 }
