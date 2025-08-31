@@ -7,8 +7,8 @@ public class WaveManager : MonoBehaviour
 
     public static int wave = 1;
 
-    public static int enemyBeatNumber = 0;
-    int waveEnemyBeatQuota = 10;
+    public int enemyBeatNumber = 0;
+    public int waveEnemyBeatQuota = 10;
 
     void Start()
     {
@@ -18,12 +18,15 @@ public class WaveManager : MonoBehaviour
 
     void Update()
     {
-        if (enemyBeatNumber >= waveEnemyBeatQuota)
-        {
-            wave += 1;
-            moleSpawner.WaveUpdate();
-            enemyBeatNumber = 0;
-        }
+
+    }
+
+
+    public void WaveAdd()
+    {
+        wave += 1;
+        moleSpawner.WaveUpdate();
+        enemyBeatNumber = 0;
     }
 
 }
