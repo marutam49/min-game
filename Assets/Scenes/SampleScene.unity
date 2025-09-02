@@ -153,6 +153,7 @@ MonoBehaviour:
   doHitDecision: 0
   hitRange: 1
   firirngInterval: 1
+  attack: 5
 --- !u!212 &199052851
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -285,7 +286,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moleSpawner: {fileID: 259916411}
   enemyBeatNumber: 0
-  waveEnemyBeatQuota: 10
+  waveEnemyBeatQuota: 100
 --- !u!114 &259916414
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour
             exp -= 1;
             hitRangeManager.hitRange += 0.01f;
             hitRangeManager.firirngInterval -= 0.01f;
+            hitRangeManager.attack += 1;
         }
     }
 }

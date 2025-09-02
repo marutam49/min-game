@@ -8,7 +8,7 @@ public class WaveManager : MonoBehaviour
     public static int wave = 1;
 
     public int enemyBeatNumber = 0;
-    public int waveEnemyBeatQuota = 10;
+    public int waveEnemyBeatQuota = 100;
 
     void Start()
     {
