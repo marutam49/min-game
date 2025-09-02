@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc5c71b4ac8d2141854ff5014695c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletSpawner: {fileID: 259916415}
   doHitDecision: 0
   hitRange: 1
   firirngInterval: 1
@@ -234,6 +235,7 @@ GameObject:
   - component: {fileID: 259916411}
   - component: {fileID: 259916413}
   - component: {fileID: 259916414}
+  - component: {fileID: 259916415}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -297,6 +299,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitRangeManager: {fileID: 199052850}
+--- !u!114 &259916415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259916410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27e542aca8d8da4da644fbd3e3a1a40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 6301425072764014422, guid: 5d089aa640b47c0439b47dde527f4876, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
