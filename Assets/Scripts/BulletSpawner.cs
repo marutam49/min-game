@@ -1,9 +1,10 @@
 using Unity.Mathematics;
 using UnityEngine;
 
+//弾の生成
 public class BulletSpawner : MonoBehaviour
 {
-    [SerializeField]GameObject bullet;
+    [SerializeField] GameObject bullet;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Start()

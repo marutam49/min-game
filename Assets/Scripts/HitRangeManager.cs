@@ -8,7 +8,9 @@ public class HitRangeManager : MonoBehaviour
     public bool doHitDecision = false;
     public float hitRange = 1.0f;
     public float firirngInterval = 1.0f;
-    
+
+    public int attack = 5;
+        
     void Start()
     {
 
