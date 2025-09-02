@@ -4,6 +4,7 @@ using UnityEngine;
 //クリック範囲の表示、クリック時の各種パラメータの管理
 public class HitRangeManager : MonoBehaviour
 {
+    [SerializeField] BulletSpawner bulletSpawner;
     public bool doHitDecision = false;
     public float hitRange = 1.0f;
     public float firirngInterval = 1.0f;
@@ -43,6 +44,7 @@ public class HitRangeManager : MonoBehaviour
     {
         gameObject.GetComponent<Renderer>().material.color = Color.gray;
         doHitDecision = true;
+        bulletSpawner.FireAnimation();
 
         yield return new WaitForSeconds(0.05f);
 
