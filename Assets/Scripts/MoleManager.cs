@@ -7,16 +7,21 @@ public class MoleManager : MonoBehaviour
 {
     public WaveManager waveManager;
 
-    int hp = 5;
+    int hp = 10;
 
     float despawnTime = 3.0f;
 
     HitRangeManager hitRangeManager;
 
+    Rigidbody2D rigidbody2D;
+
     void Start()
     {
+
+        rigidbody2D = GetComponent<Rigidbody2D>();
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
         Destroy(gameObject, despawnTime);
+        rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
     }
 
 
