@@ -16,10 +16,10 @@ public class LevelManager : MonoBehaviour
     
     void Update()
     {
-        if (exp >= 1)
+        if (exp >= 20)
         {
             level += 1;
-            exp -= 1;
+            exp -= 20;
             hitRangeManager.hitRange += 0.01f;
             hitRangeManager.firirngInterval -= 0.01f;
             hitRangeManager.attack += 1;

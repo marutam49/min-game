@@ -15,9 +15,9 @@ public class MoleSpawner : MonoBehaviour
     //waveごとの各種ステータス初期値
     //{enemyTipe, spawnInterval, numberSpawnAtOneTime}(enemyTipeは未実装)
     float[,] waveFirstState = new float[3, 3]{
-        {1, 1, 1},
-        {2, 0.1f, 1},
-        {3, 1, 1}
+        {1, 1.0f, 1},
+        {2, 0.5f, 2},
+        {3, 0.3f, 2}
     };
 
     float spawnInterval;
