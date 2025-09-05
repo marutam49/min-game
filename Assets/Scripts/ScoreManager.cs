@@ -15,7 +15,7 @@ public class ScoreManager : MonoBehaviour
 
     void Update()
     {
-        scoreDisplay.text = "score:" + score.ToString()
-                            + "level:" + LevelManager.level.ToString();
+        scoreDisplay.text = //"score:" + score.ToString()
+                             "level:" + LevelManager.level.ToString();
     }
 }
