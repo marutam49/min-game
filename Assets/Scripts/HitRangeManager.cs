@@ -5,7 +5,7 @@ using UnityEngine;
 public class HitRangeManager : MonoBehaviour
 {
     [SerializeField] BulletSpawner bulletSpawner;
-    public bool doHitDecision = false;
+    //public bool doHitDecision = false;
     public float hitRange = 1.0f;
     public float firirngInterval = 1.0f;
 
@@ -45,12 +45,12 @@ public class HitRangeManager : MonoBehaviour
     IEnumerator Fire()
     {
         gameObject.GetComponent<Renderer>().material.color = Color.gray;
-        doHitDecision = true;
+        //doHitDecision = true;
         bulletSpawner.FireAnimation();
 
         yield return new WaitForSeconds(0.05f);
 
         gameObject.GetComponent<Renderer>().material.color = Color.white;
-        doHitDecision = false;
+        //doHitDecision = false;
     }
 }
