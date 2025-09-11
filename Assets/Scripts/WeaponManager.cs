@@ -4,17 +4,25 @@ public class WeaponManager : MonoBehaviour
 {
     [SerializeField] HitRangeManager hitRangeManager;
 
+    BulletManager bulletManager;
+
     public int playerWeapon = 0;
 
     //{hitRange, firingInterval, attack, bulletSpeed}(bulletSpeedは未実装)
-    float[,] weaponFirstState = new float[1, 4]{
-        {0.3f, 0.2f, 1, 0.4f}
+    WeaponState[] weaponFirstState = new WeaponState[]{
+        new WeaponState(
+            HitRange: 0.3f,
+            FiringInterval: 0.2f,
+            Attack: 1,
+            BulletSpeed: 0.1f
+        )
     };
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        weaponReset();
+        bulletManager = FindAnyObjectByType<BulletManager>();
+        WeaponReset();
     }
 
     // Update is called once per frame
@@ -23,10 +31,24 @@ public class WeaponManager : MonoBehaviour
 
     }
 
-    void weaponReset()
+    void WeaponReset()
     {
-        hitRangeManager.hitRange = weaponFirstState[playerWeapon, 0];
-        hitRangeManager.firirngInterval = weaponFirstState[playerWeapon, 1];
-        hitRangeManager.attack = (int)weaponFirstState[playerWeapon, 2];
+        hitRangeManager.weaponState = weaponFirstState[0];
+    }
+}
+
+
+public record WeaponState(
+    float HitRange,
+    float FiringInterval,
+    int Attack,
+    float BulletSpeed
+);
+
+namespace System.Runtime.CompilerServices
+{
+    public class IsExternalInit
+    {
+        
     }
 }

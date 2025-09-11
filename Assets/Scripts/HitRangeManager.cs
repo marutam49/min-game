@@ -6,10 +6,7 @@ public class HitRangeManager : MonoBehaviour
 {
     [SerializeField] BulletSpawner bulletSpawner;
     //public bool doHitDecision = false;
-    public float hitRange = 1.0f;
-    public float firirngInterval = 1.0f;
-
-    public int attack = 5;
+    public WeaponState weaponState;
         
     void Start()
     {
@@ -25,6 +22,7 @@ public class HitRangeManager : MonoBehaviour
         mousePos.z = -9;
         transform.position = mousePos;
 
+        var hitRange = weaponState.HitRange;
         transform.localScale = new Vector3(hitRange, hitRange, hitRange);
 
         //クリック時に判定を出せるかの判定
@@ -32,7 +30,7 @@ public class HitRangeManager : MonoBehaviour
         {
             durationAfterClick += Time.deltaTime;
 
-            if (Input.GetMouseButtonDown(0) || durationAfterClick >= firirngInterval)
+            if (Input.GetMouseButtonDown(0) || durationAfterClick >= weaponState.FiringInterval)
             {
                 durationAfterClick = 0;
                 StartCoroutine(Fire());

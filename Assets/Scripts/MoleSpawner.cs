@@ -13,16 +13,23 @@ public class MoleSpawner : MonoBehaviour
     public GameObject originObject;
 
     //waveごとの各種ステータス初期値
-    //{enemyTipe, spawnInterval, numberSpawnAtOneTime}(enemyTipeは未実装)
-    float[,] waveFirstState = new float[3, 3]{
-        {1, 1.0f, 1},
-        {2, 0.5f, 2},
-        {3, 0.3f, 2}
+    //{enemyType, spawnInterval, numberSpawnAtOneTime}(enemyTypeは未実装)
+    WaveState[] waveFirstState = new WaveState[]{
+        new WaveState(
+            EnemyType: 1,
+            SpawnInterval: 1.0f,
+            NumberSpawnAtOneTime: 1),
+        new WaveState(
+            EnemyType: 2,
+            SpawnInterval: 0.5f,
+            NumberSpawnAtOneTime: 2),
+        new WaveState(
+            EnemyType: 3,
+            SpawnInterval: 0.3f,
+            NumberSpawnAtOneTime: 2)
     };
 
-    float spawnInterval;
-
-    int numberSpawnAtOneTime;
+    WaveState stateNow;
 
     void Start()
     {
@@ -42,9 +49,9 @@ public class MoleSpawner : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(spawnInterval);
+            yield return new WaitForSeconds(stateNow.SpawnInterval);
 
-            for (int i = 0; i < numberSpawnAtOneTime; i++)
+            for (int i = 0; i < stateNow.NumberSpawnAtOneTime; i++)
             {
                 Vector3 spawnPoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
                 spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
@@ -55,7 +62,12 @@ public class MoleSpawner : MonoBehaviour
 
     public void WaveUpdate()
     {
-        spawnInterval = waveFirstState[WaveManager.wave - 1, 1];
-        numberSpawnAtOneTime = (int)waveFirstState[WaveManager.wave - 1, 2];
+        stateNow = waveFirstState[WaveManager.wave - 1];
     }
 }
+
+public record WaveState(
+    int EnemyType,
+    float SpawnInterval,
+    int NumberSpawnAtOneTime
+);

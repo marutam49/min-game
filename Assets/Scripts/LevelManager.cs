@@ -20,9 +20,13 @@ public class LevelManager : MonoBehaviour
         {
             level += 1;
             exp -= 20;
-            hitRangeManager.hitRange += 0.01f;
-            hitRangeManager.firirngInterval -= 0.01f;
-            hitRangeManager.attack += 1;
+            var state = hitRangeManager.weaponState;
+            hitRangeManager.weaponState = new WeaponState(
+                HitRange: state.HitRange + 0.01f,
+                FiringInterval: state.FiringInterval - 0.01f,
+                Attack: state.Attack + 1,
+                BulletSpeed: state.BulletSpeed
+            );
         }
     }
 }
