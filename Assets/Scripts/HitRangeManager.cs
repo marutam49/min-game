@@ -4,10 +4,10 @@ using UnityEngine;
 //クリック範囲の表示、クリック時の各種パラメータの管理
 public class HitRangeManager : MonoBehaviour
 {
-    public bool doHitDecision = false;
-    public float hitRange = 1.0f;
-    public float firirngInterval = 1.0f;
-    
+    [SerializeField] BulletSpawner bulletSpawner;
+    //public bool doHitDecision = false;
+    public WeaponState weaponState;
+        
     void Start()
     {
 
@@ -22,6 +22,7 @@ public class HitRangeManager : MonoBehaviour
         mousePos.z = -9;
         transform.position = mousePos;
 
+        var hitRange = weaponState.HitRange;
         transform.localScale = new Vector3(hitRange, hitRange, hitRange);
 
         //クリック時に判定を出せるかの判定
@@ -29,7 +30,7 @@ public class HitRangeManager : MonoBehaviour
         {
             durationAfterClick += Time.deltaTime;
 
-            if (Input.GetMouseButtonDown(0) || durationAfterClick >= firirngInterval)
+            if (Input.GetMouseButtonDown(0) || durationAfterClick >= weaponState.FiringInterval)
             {
                 durationAfterClick = 0;
                 StartCoroutine(Fire());
@@ -42,11 +43,12 @@ public class HitRangeManager : MonoBehaviour
     IEnumerator Fire()
     {
         gameObject.GetComponent<Renderer>().material.color = Color.gray;
-        doHitDecision = true;
+        //doHitDecision = true;
+        bulletSpawner.FireAnimation();
 
         yield return new WaitForSeconds(0.05f);
 
         gameObject.GetComponent<Renderer>().material.color = Color.white;
-        doHitDecision = false;
+        //doHitDecision = false;
     }
 }
