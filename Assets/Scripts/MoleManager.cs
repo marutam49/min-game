@@ -12,6 +12,13 @@ public class MoleManager : MonoBehaviour
 
     Rigidbody2D rigidbody2D;
 
+    [SerializeField]
+    [Tooltip("発生させるエフェクト（パーティクル）")]
+    private ParticleSystem particle1;
+    [SerializeField]
+    private ParticleSystem particle2;
+
+
     int hp = 10;
 
     //float despawnTime = 3.0f;
@@ -51,6 +58,10 @@ public class MoleManager : MonoBehaviour
             ScoreManager.score += 5;
             waveManager.enemyBeatNumber += 1;
             LevelManager.exp += 5;
+            ParticleSystem newParticle = Instantiate(particle2);
+            newParticle.transform.position = this.transform.position;
+            newParticle.Play();
+            Destroy(newParticle.gameObject, 5.0f);
 
             if (waveManager.enemyBeatNumber >= waveManager.waveEnemyBeatQuota)
             {
@@ -74,6 +85,10 @@ public class MoleManager : MonoBehaviour
                 hp -= hitRangeManager.weaponState.Attack;
                 //gameObject.GetComponent<Renderer>().material.color = Color.white;
                 Destroy(collider.gameObject);
+                ParticleSystem newParticle = Instantiate(particle1);
+                newParticle.transform.position = this.transform.position;
+                newParticle.Play();
+                Destroy(newParticle.gameObject, 5.0f);
             }
         }
     }

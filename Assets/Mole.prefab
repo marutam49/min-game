@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 7441691267565176134}
   - component: {fileID: 4929195219332641223}
   - component: {fileID: -6087936384712424041}
-  - component: {fileID: -7820490713034115556}
   m_Layer: 0
   m_Name: Mole
   m_TagString: Untagged
@@ -104,6 +103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveManager: {fileID: 0}
+  particle1: {fileID: 7284106743644514584, guid: 19112a4fc4c3e8c4cb44db0781fa8a93, type: 3}
+  particle2: {fileID: 939698731146127878, guid: d07062782ffdd414580ecb7f3e3f0181, type: 3}
   distanceFromCamera: 15
 --- !u!58 &4929195219332641223
 CircleCollider2D:
@@ -168,16 +169,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-7820490713034115556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4478571685536806147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38026c10f6ae45e4fac2402f530d54ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particle: {fileID: 7284106743644514584, guid: 19112a4fc4c3e8c4cb44db0781fa8a93, type: 3}
