@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] HitRangeManager hitRangeManager;
@@ -30,3 +29,4 @@ public class LevelManager : MonoBehaviour
         }
     }
 }
+  

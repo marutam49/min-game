@@ -13,7 +13,7 @@ public class WeaponManager : MonoBehaviour
         new WeaponState(
             HitRange: 0.3f,
             FiringInterval: 0.2f,
-            Attack: 1,
+            Attack: 10,
             BulletSpeed: 0.1f
         )
     };
