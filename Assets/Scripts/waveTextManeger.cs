@@ -3,6 +3,7 @@ using TMPro;
 
 public class waveTextManager : MonoBehaviour
 {
+    public static waveTextManager Instance;
     public TextMeshProUGUI titleText;
     public string displayMessage = "WAVE:1";
 
@@ -13,6 +14,11 @@ public class waveTextManager : MonoBehaviour
     public float duration = 10f; //移動時間
 
     public float elapsed = 0f;
+
+    void Awake()
+    {
+        Instance = this;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -34,9 +40,12 @@ public class waveTextManager : MonoBehaviour
         }
     }
 
-    public void changeText(string newText)
+    public static void changeText(string newText)
     {
-        titleText.text = newText;
-        elapsed = 0f;
+        if (Instance != null)
+        {
+            Instance.titleText.text = newText;
+            Instance.elapsed = 0f;
+        }
     }
 }
