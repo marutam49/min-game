@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 07dd5363127ad494e8e747e4a423e44c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - audioMixer: {fileID: 24100000, guid: b423e7cb2d09f4e479f60de6e5f5c278, type: 2}
+  - BGMSlider: {fileID: 1864106464251647178, guid: 1dbcaee4f4533734890045f420a11aac, type: 3}
+  - SESlider: {fileID: 8985794295966513950, guid: 50a33131d64187842932ff3a9fd7d53b, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
