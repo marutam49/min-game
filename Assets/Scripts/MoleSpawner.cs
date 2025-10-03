@@ -47,7 +47,7 @@ public class MoleSpawner : MonoBehaviour
 
     IEnumerator Spawn()
     {
-        while (true)
+        while (WaveManager.wave == 1)
         {
             yield return new WaitForSeconds(stateNow.SpawnInterval);
 
