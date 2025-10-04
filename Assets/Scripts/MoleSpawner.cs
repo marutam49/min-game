@@ -11,6 +11,7 @@ public class MoleSpawner : MonoBehaviour
 {
 
     public GameObject originObject;
+    public GameObject secondObject;
 
     //waveごとの各種ステータス初期値
     //{enemyType, spawnInterval, numberSpawnAtOneTime}(enemyTypeは未実装)
@@ -34,6 +35,7 @@ public class MoleSpawner : MonoBehaviour
     void Start()
     {
         originObject.GetComponent<MoleManager>().waveManager = this.GetComponent<WaveManager>();
+        secondObject.GetComponent<Mole2Manager>().waveManager = this.GetComponent<WaveManager>();
         WaveUpdate();
         StartCoroutine(Spawn());
     }
@@ -47,7 +49,7 @@ public class MoleSpawner : MonoBehaviour
 
     IEnumerator Spawn()
     {
-        while (true)
+        while (WaveManager.wave == 1)
         {
             yield return new WaitForSeconds(stateNow.SpawnInterval);
 
@@ -56,6 +58,18 @@ public class MoleSpawner : MonoBehaviour
                 Vector3 spawnPoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
                 spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
                 Instantiate(originObject, spawnPoint, Quaternion.identity);
+            }
+        }
+    
+        while (WaveManager.wave >= 2)
+        {
+            yield return new WaitForSeconds(stateNow.SpawnInterval);
+
+            for (int i = 0; i < stateNow.NumberSpawnAtOneTime; i++)
+            {
+                Vector3 spawnPoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
+                spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
+                Instantiate(secondObject, spawnPoint, Quaternion.identity);
             }
         }
     }

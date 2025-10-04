@@ -10,14 +10,14 @@ public class Mole2Manager : MonoBehaviour
 
     Rigidbody2D rigidbody2D;
 
-    // [SerializeField]
-    // [Tooltip("発生させるエフェクト（パーティクル）")]
-    // private ParticleSystem particle1;
-    // [SerializeField]
-    // private ParticleSystem particle2;
+    [SerializeField]
+    [Tooltip("発生させるエフェクト（パーティクル）")]
+    private ParticleSystem particle1;
+    [SerializeField]
+    private ParticleSystem particle2;
 
 
-    int hp = 1000;
+    int hp = 30;
 
     //float despawnTime = 3.0f;
 
@@ -40,10 +40,10 @@ public class Mole2Manager : MonoBehaviour
             ScoreManager.score += 5;
             waveManager.enemyBeatNumber += 1;
             LevelManager.exp += 5;
-            //ParticleSystem newParticle = Instantiate(particle2);
-            //newParticle.transform.position = this.transform.position;
-            //newParticle.Play();
-            //Destroy(newParticle.gameObject, 5.0f);
+            ParticleSystem newParticle = Instantiate(particle2);
+            newParticle.transform.position = this.transform.position;
+            newParticle.Play();
+            Destroy(newParticle.gameObject, 5.0f);
 
             Destroy(gameObject, 0.1f);
 
@@ -60,10 +60,10 @@ public class Mole2Manager : MonoBehaviour
             {
                 hp -= hitRangeManager.weaponState.Attack;
                 Destroy(collider.gameObject);
-                //ParticleSystem newParticle = Instantiate(particle1);
-                //newParticle.transform.position = this.transform.position;
-                //newParticle.Play();
-                //Destroy(newParticle.gameObject, 5.0f);
+                ParticleSystem newParticle = Instantiate(particle1);
+                newParticle.transform.position = this.transform.position;
+                newParticle.Play();
+                Destroy(newParticle.gameObject, 5.0f);
             }
         }
     }
@@ -72,10 +72,15 @@ public class Mole2Manager : MonoBehaviour
     {
         while (true)
         {
-            Vector3 movePoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
-            movePoint = Camera.main.ViewportToWorldPoint(movePoint);
-            transform.position = movePoint;
-            yield return new WaitForSeconds(6f);
+            for (int i = 0; i < 3; i++)
+            {
+                Vector3 movePoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
+                movePoint = Camera.main.ViewportToWorldPoint(movePoint);
+                transform.position = movePoint;
+                yield return new WaitForSeconds(2.0f);
+            }
+
+            Destroy(this.gameObject);
         }
             // while (distanceFromCamera >= 1.0f)
         // {
