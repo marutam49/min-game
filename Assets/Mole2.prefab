@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8148312908273545176}
   - component: {fileID: 8331140141263262246}
-  - component: {fileID: 4776797749591157211}
+  - component: {fileID: 6845568445093432914}
   - component: {fileID: -7669957748033208819}
   - component: {fileID: 169723016300414709}
   m_Layer: 0
@@ -90,7 +90,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4776797749591157211
+--- !u!114 &6845568445093432914
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -99,11 +99,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8278811132962538953}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82e1191e7f4902347a05c6ab08d81b0b, type: 3}
+  m_Script: {fileID: 11500000, guid: c36caaf226c5da54a9c365f843072737, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   waveManager: {fileID: 0}
-  distanceFromCamera: 15
+  particle1: {fileID: 7284106743644514584, guid: 19112a4fc4c3e8c4cb44db0781fa8a93, type: 3}
+  particle2: {fileID: 939698731146127878, guid: d07062782ffdd414580ecb7f3e3f0181, type: 3}
+  distanceFromCamera: 10
 --- !u!58 &-7669957748033208819
 CircleCollider2D:
   m_ObjectHideFlags: 0
