@@ -28,7 +28,7 @@ public class WaveManager : MonoBehaviour
         Debug.Log(wave);
         moleSpawner.WaveUpdate();
         enemyBeatNumber = 0;
-        waveTextManager.changeText("WAVE:"+wave);
+        waveTextManager.changeText("WAVE:" + wave);
     }
-
+    
 }

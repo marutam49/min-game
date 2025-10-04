@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class pauseButtonManager : MonoBehaviour
 {
     public GameObject pausePanel;
-    private bool isPaused = false;
+    public static bool isPaused = false;
 
     public void PauseGame()
     {
