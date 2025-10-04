@@ -35,6 +35,7 @@ public class MoleSpawner : MonoBehaviour
     void Start()
     {
         originObject.GetComponent<MoleManager>().waveManager = this.GetComponent<WaveManager>();
+        secondObject.GetComponent<Mole2Manager>().waveManager = this.GetComponent<WaveManager>();
         WaveUpdate();
         StartCoroutine(Spawn());
     }

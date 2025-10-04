@@ -17,7 +17,7 @@ public class Mole2Manager : MonoBehaviour
     private ParticleSystem particle2;
 
 
-    int hp = 1000;
+    int hp = 30;
 
     //float despawnTime = 3.0f;
 
@@ -72,10 +72,15 @@ public class Mole2Manager : MonoBehaviour
     {
         while (true)
         {
-            Vector3 movePoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
-            movePoint = Camera.main.ViewportToWorldPoint(movePoint);
-            transform.position = movePoint;
-            yield return new WaitForSeconds(6f);
+            for (int i = 0; i < 3; i++)
+            {
+                Vector3 movePoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
+                movePoint = Camera.main.ViewportToWorldPoint(movePoint);
+                transform.position = movePoint;
+                yield return new WaitForSeconds(2.0f);
+            }
+
+            Destroy(this.gameObject);
         }
             // while (distanceFromCamera >= 1.0f)
         // {
