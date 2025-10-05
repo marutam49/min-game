@@ -5,6 +5,7 @@ using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 using Quaternion = UnityEngine.Quaternion;
 using UnityEngine.SocialPlatforms.Impl;
+using System.Runtime.CompilerServices;
 
 //モグラをスポーンさせる、モグラの種類と出現時のステータスの管理
 public class MoleSpawner : MonoBehaviour
@@ -39,7 +40,6 @@ public class MoleSpawner : MonoBehaviour
         secondObject.GetComponent<Mole2Manager>().waveManager = this.GetComponent<WaveManager>();
         thirdObject.GetComponent<Mole3Manager>().waveManager = this.GetComponent<WaveManager>();
         WaveUpdate();
-        StartCoroutine(Spawn());
     }
 
 
@@ -48,9 +48,11 @@ public class MoleSpawner : MonoBehaviour
 
     }
 
+    private bool wave2SpawnFlag = true;
 
     IEnumerator Spawn()
     {
+    
         while (WaveManager.wave == 1)
         {
             yield return new WaitForSeconds(stateNow.SpawnInterval);
@@ -63,19 +65,16 @@ public class MoleSpawner : MonoBehaviour
             }
         }
 
-        while (WaveManager.wave == 2)
+        while (WaveManager.wave == 2 && wave2SpawnFlag)
         {
             yield return new WaitForSeconds(stateNow.SpawnInterval);
-
-            for (int i = 0; i < stateNow.NumberSpawnAtOneTime; i++)
-            {
-                Vector3 spawnPoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
-                spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
-                Instantiate(secondObject, spawnPoint, Quaternion.identity);
-            }
+            Vector3 spawnPoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
+            spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
+            Instantiate(secondObject, spawnPoint, Quaternion.identity);
+            wave2SpawnFlag = false;
         }
-        
-        while (WaveManager.wave == 3)
+
+        while (WaveManager.wave >= 3)
         {
             yield return new WaitForSeconds(stateNow.SpawnInterval);
 
@@ -91,6 +90,7 @@ public class MoleSpawner : MonoBehaviour
     public void WaveUpdate()
     {
         stateNow = waveFirstState[WaveManager.wave - 1];
+        StartCoroutine(Spawn());
     }
 }
 

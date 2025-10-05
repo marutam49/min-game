@@ -45,6 +45,8 @@ public class Mole2Manager : MonoBehaviour
             newParticle.Play();
             Destroy(newParticle.gameObject, 5.0f);
 
+            waveManager.WaveAdd();
+
             Destroy(gameObject, 0.1f);
 
             enabled = false;
@@ -85,7 +87,7 @@ public class Mole2Manager : MonoBehaviour
         */
         while (distanceFromCamera >= 1.0f)
         {
-             transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
+             transform.localScale = new Vector3(10 / distanceFromCamera, 10 / distanceFromCamera, 1);
              yield return new WaitForSeconds(0.01f);
              distanceFromCamera -= 0.05f;
         }
