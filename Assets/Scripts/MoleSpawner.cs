@@ -40,6 +40,7 @@ public class MoleSpawner : MonoBehaviour
         secondObject.GetComponent<Mole2Manager>().waveManager = this.GetComponent<WaveManager>();
         thirdObject.GetComponent<Mole3Manager>().waveManager = this.GetComponent<WaveManager>();
         WaveUpdate();
+        StartCoroutine(Spawn());
     }
 
 
@@ -52,37 +53,39 @@ public class MoleSpawner : MonoBehaviour
 
     IEnumerator Spawn()
     {
-    
-        while (WaveManager.wave == 1)
+        while (true)
         {
-            yield return new WaitForSeconds(stateNow.SpawnInterval);
-
-            for (int i = 0; i < stateNow.NumberSpawnAtOneTime; i++)
+            if (WaveManager.wave == 1)
             {
-                Vector3 spawnPoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
-                spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
-                Instantiate(originObject, spawnPoint, Quaternion.identity);
+                yield return new WaitForSeconds(stateNow.SpawnInterval);
+
+                for (int i = 0; i < stateNow.NumberSpawnAtOneTime; i++)
+                {
+                    Vector3 spawnPoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
+                    spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
+                    Instantiate(originObject, spawnPoint, Quaternion.identity);
+                }
             }
-        }
 
-        while (WaveManager.wave == 2 && wave2SpawnFlag)
-        {
-            yield return new WaitForSeconds(stateNow.SpawnInterval);
-            Vector3 spawnPoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
-            spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
-            Instantiate(secondObject, spawnPoint, Quaternion.identity);
-            wave2SpawnFlag = false;
-        }
-
-        while (WaveManager.wave >= 3)
-        {
-            yield return new WaitForSeconds(stateNow.SpawnInterval);
-
-            for (int i = 0; i < stateNow.NumberSpawnAtOneTime; i++)
+            if (WaveManager.wave == 2 && wave2SpawnFlag)
             {
+                yield return new WaitForSeconds(stateNow.SpawnInterval);
                 Vector3 spawnPoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
                 spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
-                Instantiate(thirdObject, spawnPoint, Quaternion.identity);
+                Instantiate(secondObject, spawnPoint, Quaternion.identity);
+                wave2SpawnFlag = false;
+            }
+
+            if (WaveManager.wave >= 3)
+            {
+                yield return new WaitForSeconds(stateNow.SpawnInterval);
+
+                for (int i = 0; i < stateNow.NumberSpawnAtOneTime; i++)
+                {
+                    Vector3 spawnPoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
+                    spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
+                    Instantiate(thirdObject, spawnPoint, Quaternion.identity);
+                }
             }
         }
     }
@@ -90,7 +93,6 @@ public class MoleSpawner : MonoBehaviour
     public void WaveUpdate()
     {
         stateNow = waveFirstState[WaveManager.wave - 1];
-        StartCoroutine(Spawn());
     }
 }
 
