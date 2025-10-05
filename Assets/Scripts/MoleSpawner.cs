@@ -5,6 +5,7 @@ using UnityEngine;
 using Vector3 = UnityEngine.Vector3;
 using Quaternion = UnityEngine.Quaternion;
 using UnityEngine.SocialPlatforms.Impl;
+using System.Runtime.CompilerServices;
 
 //モグラをスポーンさせる、モグラの種類と出現時のステータスの管理
 public class MoleSpawner : MonoBehaviour
@@ -12,6 +13,7 @@ public class MoleSpawner : MonoBehaviour
 
     public GameObject originObject;
     public GameObject secondObject;
+    public GameObject thirdObject;
 
     //waveごとの各種ステータス初期値
     //{enemyType, spawnInterval, numberSpawnAtOneTime}(enemyTypeは未実装)
@@ -36,8 +38,8 @@ public class MoleSpawner : MonoBehaviour
     {
         originObject.GetComponent<MoleManager>().waveManager = this.GetComponent<WaveManager>();
         secondObject.GetComponent<Mole2Manager>().waveManager = this.GetComponent<WaveManager>();
+        thirdObject.GetComponent<Mole3Manager>().waveManager = this.GetComponent<WaveManager>();
         WaveUpdate();
-        StartCoroutine(Spawn());
     }
 
 
@@ -46,9 +48,11 @@ public class MoleSpawner : MonoBehaviour
 
     }
 
+    private bool wave2SpawnFlag = true;
 
     IEnumerator Spawn()
     {
+    
         while (WaveManager.wave == 1)
         {
             yield return new WaitForSeconds(stateNow.SpawnInterval);
@@ -60,8 +64,17 @@ public class MoleSpawner : MonoBehaviour
                 Instantiate(originObject, spawnPoint, Quaternion.identity);
             }
         }
-    
-        while (WaveManager.wave >= 2)
+
+        while (WaveManager.wave == 2 && wave2SpawnFlag)
+        {
+            yield return new WaitForSeconds(stateNow.SpawnInterval);
+            Vector3 spawnPoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
+            spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
+            Instantiate(secondObject, spawnPoint, Quaternion.identity);
+            wave2SpawnFlag = false;
+        }
+
+        while (WaveManager.wave >= 3)
         {
             yield return new WaitForSeconds(stateNow.SpawnInterval);
 
@@ -69,7 +82,7 @@ public class MoleSpawner : MonoBehaviour
             {
                 Vector3 spawnPoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
                 spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
-                Instantiate(secondObject, spawnPoint, Quaternion.identity);
+                Instantiate(thirdObject, spawnPoint, Quaternion.identity);
             }
         }
     }
@@ -77,6 +90,7 @@ public class MoleSpawner : MonoBehaviour
     public void WaveUpdate()
     {
         stateNow = waveFirstState[WaveManager.wave - 1];
+        StartCoroutine(Spawn());
     }
 }
 
