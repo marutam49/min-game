@@ -29,6 +29,18 @@ public class MoleSpawner : MonoBehaviour
         new WaveState(
             EnemyType: 3,
             SpawnInterval: 0.3f,
+            NumberSpawnAtOneTime: 2),
+        new WaveState(
+            EnemyType: 4,
+            SpawnInterval: 0.3f,
+            NumberSpawnAtOneTime: 2),
+        new WaveState(
+            EnemyType: 5,
+            SpawnInterval: 0.3f,
+            NumberSpawnAtOneTime: 2),
+        new WaveState(
+            EnemyType: 3,
+            SpawnInterval: 0.3f,
             NumberSpawnAtOneTime: 2)
     };
 
@@ -55,9 +67,9 @@ public class MoleSpawner : MonoBehaviour
     {
         while (true)
         {
+            yield return new WaitForSeconds(stateNow.SpawnInterval);
             if (WaveManager.wave == 1)
             {
-                yield return new WaitForSeconds(stateNow.SpawnInterval);
 
                 for (int i = 0; i < stateNow.NumberSpawnAtOneTime; i++)
                 {
@@ -69,7 +81,6 @@ public class MoleSpawner : MonoBehaviour
 
             if (WaveManager.wave == 2 && wave2SpawnFlag)
             {
-                yield return new WaitForSeconds(stateNow.SpawnInterval);
                 Vector3 spawnPoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
                 spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
                 Instantiate(secondObject, spawnPoint, Quaternion.identity);
@@ -78,8 +89,6 @@ public class MoleSpawner : MonoBehaviour
 
             if (WaveManager.wave >= 3)
             {
-                yield return new WaitForSeconds(stateNow.SpawnInterval);
-
                 for (int i = 0; i < stateNow.NumberSpawnAtOneTime; i++)
                 {
                     Vector3 spawnPoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
