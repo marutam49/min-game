@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -17,7 +18,7 @@ public class Mole2Manager : MonoBehaviour
     private ParticleSystem particle2;
 
 
-    int hp = 10;
+    int hp = 50;
 
     //float despawnTime = 3.0f;
 
@@ -72,6 +73,7 @@ public class Mole2Manager : MonoBehaviour
 
     IEnumerator MoleMove()
     {
+        System.Random r = new System.Random();
         /*while (true)
         {
             for (int i = 0; i < 3; i++)
@@ -87,10 +89,13 @@ public class Mole2Manager : MonoBehaviour
         */
         while (distanceFromCamera >= 1.0f)
         {
-             transform.localScale = new Vector3(10 / distanceFromCamera, 10 / distanceFromCamera, 1);
-             yield return new WaitForSeconds(0.01f);
-             distanceFromCamera -= 0.05f;
+            Vector3 movePoint = new Vector3(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), 1.0f);
+            movePoint = Camera.main.ViewportToWorldPoint(movePoint);
+            transform.position = movePoint;
+            yield return new WaitForSeconds(1.0f);
+            transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
+            float valuableNumber = (float)(r.NextDouble()*0.05 -0.1);
+            distanceFromCamera += valuableNumber;
         }
-        Destroy(this.gameObject);
     }
 }
