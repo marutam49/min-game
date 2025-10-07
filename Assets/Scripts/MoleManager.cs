@@ -79,8 +79,8 @@ public class MoleManager : MonoBehaviour
     {
         if (collider.gameObject.tag == "Bullet")
         {
-            BulletManager bulletManager = collider.gameObject.GetComponent<BulletManager>();
-            if (-0.4f < bulletManager.distanceFromCamera - distanceFromCamera && bulletManager.distanceFromCamera - distanceFromCamera < 0.4f)
+            float distance = Vector2.Distance(transform.position, collider.transform.position);
+            if (distance < 3.0f / distanceFromCamera)
             {
                 //gameObject.GetComponent<Renderer>().material.color = Color.yellow;
                 hp -= hitRangeManager.weaponState.Attack;
