@@ -32,7 +32,7 @@ public class BulletManager : MonoBehaviour
         while (distanceFromCamera <= 15.0f)
         {
             transform.localScale = new Vector3(5 * hitRangeManager.weaponState.HitRange / distanceFromCamera, 5 * hitRangeManager.weaponState.HitRange / distanceFromCamera, 1);
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.005f);
             distanceFromCamera += hitRangeManager.weaponState.BulletSpeed;
         }
 

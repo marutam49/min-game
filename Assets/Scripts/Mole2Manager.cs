@@ -92,7 +92,7 @@ public class Mole2Manager : MonoBehaviour
             Vector3 movePoint = new Vector3(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), 1.0f);
             movePoint = Camera.main.ViewportToWorldPoint(movePoint);
             transform.position = movePoint;
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(1.3f);
             transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
             float valuableNumber = (float)(r.NextDouble()*0.05 -0.1);
             distanceFromCamera += valuableNumber;
