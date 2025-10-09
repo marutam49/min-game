@@ -165,3 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9306cc8c8528ea45a25b1070962c3bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waveManager: {fileID: 0}
+  particle1: {fileID: 7284106743644514584, guid: 19112a4fc4c3e8c4cb44db0781fa8a93, type: 3}
+  particle2: {fileID: 939698731146127878, guid: d07062782ffdd414580ecb7f3e3f0181, type: 3}
+  distanceFromCamera: 3
