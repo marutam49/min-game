@@ -19,7 +19,7 @@ public class Mole4Manager : MonoBehaviour
     private ParticleSystem particle2;
 
 
-    int hp = 10;
+    int hp = 150;
 
     //float despawnTime = 3.0f;
 

@@ -16,13 +16,15 @@ public class Mole2Manager : MonoBehaviour
     private ParticleSystem particle1;
     [SerializeField]
     private ParticleSystem particle2;
+    [SerializeField]
+    private ParticleSystem warpParticle;
 
 
     int hp = 50;
 
     //float despawnTime = 3.0f;
 
-    public float distanceFromCamera = 10.0f;
+    public float distanceFromCamera = 5.0f;
 
 
     void Start()
@@ -80,10 +82,13 @@ public class Mole2Manager : MonoBehaviour
             float moveSelect = (float)(r.NextDouble());
             if (moveSelect < 0.25)
             {
+                ParticleSystem newParticle = Instantiate(warpParticle);
+                newParticle.transform.position = this.transform.position;
+                newParticle.Play();
+                yield return new WaitForSeconds(1.3f);
                 Vector3 movePoint = new Vector3(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), 1.0f);
                 movePoint = Camera.main.ViewportToWorldPoint(movePoint);
                 transform.position = movePoint;
-                yield return new WaitForSeconds(1.3f);
                 transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
                 float valuableNumber = (float)(r.NextDouble() * 0.05 - 0.1);
                 distanceFromCamera += valuableNumber;

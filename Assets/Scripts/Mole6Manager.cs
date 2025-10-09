@@ -112,8 +112,6 @@ public class Mole6Manager : MonoBehaviour
             rigidbody2D.linearVelocityY = -rigidbody2D.linearVelocityY;
             }
         }
-
-        Destroy(this.gameObject);
     }
 }
 
