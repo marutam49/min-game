@@ -93,24 +93,6 @@ public class MoleSpawner : MonoBehaviour
                 Instantiate(secondObject, spawnPoint, Quaternion.identity);
                 wave2SpawnFlag = false;
             }
-
-            if (WaveManager.wave >= 3)
-            {
-                for (int i = 0; i < stateNow.NumberSpawnAtOneTime; i++)
-                {
-                    Vector3 spawnPoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
-                    spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
-                    Instantiate(thirdObject, spawnPoint, Quaternion.identity);
-                }
-            }
-            if (WaveManager.wave == 2 && wave2SpawnFlag)
-            {
-                Vector3 spawnPoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
-                spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
-                Instantiate(secondObject, spawnPoint, Quaternion.identity);
-                wave2SpawnFlag = false;
-            }
-
             if (WaveManager.wave == 3)
             {
                 for (int i = 0; i < stateNow.NumberSpawnAtOneTime; i++)

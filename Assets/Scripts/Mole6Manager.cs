@@ -98,7 +98,7 @@ public class Mole6Manager : MonoBehaviour
     {
         while (distanceFromCamera >= 1.0f)
         {
-            transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
+            transform.localScale = new Vector3(5 / distanceFromCamera, 5 / distanceFromCamera, 1);
             yield return new WaitForSeconds(0.01f);
             distanceFromCamera -= 0.05f;
             Vector3 currentPosition = transform.position;
