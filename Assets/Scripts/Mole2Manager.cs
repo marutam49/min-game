@@ -74,28 +74,39 @@ public class Mole2Manager : MonoBehaviour
     IEnumerator MoleMove()
     {
         System.Random r = new System.Random();
-        /*while (true)
-        {
-            for (int i = 0; i < 3; i++)
-            {
-                Vector3 movePoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
-                movePoint = Camera.main.ViewportToWorldPoint(movePoint);
-                transform.position = movePoint;
-                yield return new WaitForSeconds(2.0f);
-            }
 
-            Destroy(this.gameObject);
-        }
-        */
         while (distanceFromCamera >= 1.0f)
         {
-            Vector3 movePoint = new Vector3(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), 1.0f);
-            movePoint = Camera.main.ViewportToWorldPoint(movePoint);
-            transform.position = movePoint;
-            yield return new WaitForSeconds(1.3f);
-            transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
-            float valuableNumber = (float)(r.NextDouble()*0.05 -0.1);
-            distanceFromCamera += valuableNumber;
+            float moveSelect = (float)(r.NextDouble());
+            if (moveSelect < 0.25)
+            {
+                Vector3 movePoint = new Vector3(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), 1.0f);
+                movePoint = Camera.main.ViewportToWorldPoint(movePoint);
+                transform.position = movePoint;
+                yield return new WaitForSeconds(1.3f);
+                transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
+                float valuableNumber = (float)(r.NextDouble() * 0.05 - 0.1);
+                distanceFromCamera += valuableNumber;
+            }
+            if (moveSelect >= 0.25)
+            {
+                Vector3 currentPosition = transform.position;
+                Vector2 moveDirection = Vector2.zero;
+                //いる方向と逆方向に移動
+                float speedX = (float)(r.NextDouble() * 20 + 20);
+                if (currentPosition.x > 0)
+                    speedX = -speedX;
+                moveDirection.x = speedX;
+                float speedY = (float)(r.NextDouble() * 20 + 20);
+                if (currentPosition.y > 0)
+                    speedY = -speedY;
+                moveDirection.y = speedY;
+                for (int i = 0; i < 26; i++)
+                {
+                    transform.position += new Vector3(moveDirection.x, moveDirection.y, 0f) * Time.deltaTime;
+                    yield return new WaitForSeconds(0.05f);
+                }
+            }
         }
     }
 }
