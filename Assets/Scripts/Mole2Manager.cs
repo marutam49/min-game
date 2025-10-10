@@ -83,14 +83,14 @@ public class Mole2Manager : MonoBehaviour
             if (moveSelect < 0.25)
             {
                 ParticleSystem newParticle = Instantiate(warpParticle);
-                newParticle.transform.position = this.transform.position;
+                newParticle.transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
                 newParticle.Play();
                 yield return new WaitForSeconds(1.3f);
                 Vector3 movePoint = new Vector3(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), 1.0f);
                 movePoint = Camera.main.ViewportToWorldPoint(movePoint);
                 transform.position = movePoint;
                 transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
-                float valuableNumber = (float)(r.NextDouble() * 0.05 - 0.1);
+                float valuableNumber = (float)(r.NextDouble() * 0.2 - 0.1);
                 distanceFromCamera += valuableNumber;
             }
             if (moveSelect >= 0.25)
