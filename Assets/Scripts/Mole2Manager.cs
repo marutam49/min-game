@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -25,6 +26,7 @@ public class Mole2Manager : MonoBehaviour
     //float despawnTime = 3.0f;
 
     public float distanceFromCamera = 5.0f;
+    private float alpha = 1f;
 
 
     void Start()
@@ -76,16 +78,29 @@ public class Mole2Manager : MonoBehaviour
     IEnumerator MoleMove()
     {
         System.Random r = new System.Random();
-
         while (distanceFromCamera >= 1.0f)
         {
             float moveSelect = (float)(r.NextDouble());
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
             if (moveSelect < 0.25)
             {
                 ParticleSystem newParticle = Instantiate(warpParticle);
+                var mat = newParticle.GetComponent<ParticleSystemRenderer>().material;
+                mat.renderQueue = 3100;
+                Color c = sr.material.color;
                 newParticle.transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
                 newParticle.Play();
-                yield return new WaitForSeconds(1.3f);
+                for (int i = 0; i < 20; i++)
+                {
+                    alpha -= 0.05f;
+                    alpha = Mathf.Clamp01(alpha);
+                    c.a = alpha;
+                    sr.color = c;
+                    yield return new WaitForSeconds(0.065f);
+                }
+                alpha = 1f;
+                c.a = alpha;
+                sr.color = c;
                 Vector3 movePoint = new Vector3(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), 1.0f);
                 movePoint = Camera.main.ViewportToWorldPoint(movePoint);
                 transform.position = movePoint;
