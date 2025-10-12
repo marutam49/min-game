@@ -19,6 +19,8 @@ public class Mole2Manager : MonoBehaviour
     private ParticleSystem particle2;
     [SerializeField]
     private ParticleSystem warpParticle;
+    [SerializeField]
+    private ParticleSystem warpParticle_out;
 
 
     int hp = 50;
@@ -85,11 +87,14 @@ public class Mole2Manager : MonoBehaviour
             if (moveSelect < 0.25)
             {
                 ParticleSystem newParticle = Instantiate(warpParticle);
+                //effectsがmoleより前に配置されるようにする。
                 var mat = newParticle.GetComponent<ParticleSystemRenderer>().material;
                 mat.renderQueue = 3100;
                 Color c = sr.material.color;
                 newParticle.transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
                 newParticle.Play();
+                Vector3 movePoint = new Vector3(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), 1.0f);
+                movePoint = Camera.main.ViewportToWorldPoint(movePoint);
                 for (int i = 0; i < 20; i++)
                 {
                     alpha -= 0.05f;
@@ -97,12 +102,18 @@ public class Mole2Manager : MonoBehaviour
                     c.a = alpha;
                     sr.color = c;
                     yield return new WaitForSeconds(0.065f);
+                    if (i == 12) 
+                    {
+                        ParticleSystem newParticle_2 = Instantiate(warpParticle_out);
+                        var mat_2 = newParticle_2.GetComponent<ParticleSystemRenderer>().material;
+                        mat_2.renderQueue = 3100;
+                        newParticle_2.transform.position = movePoint;
+                        newParticle_2.Play();
+                    }
                 }
                 alpha = 1f;
                 c.a = alpha;
                 sr.color = c;
-                Vector3 movePoint = new Vector3(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), 1.0f);
-                movePoint = Camera.main.ViewportToWorldPoint(movePoint);
                 transform.position = movePoint;
                 transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
                 float valuableNumber = (float)(r.NextDouble() * 0.2 - 0.1);

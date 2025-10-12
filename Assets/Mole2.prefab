@@ -106,6 +106,7 @@ MonoBehaviour:
   particle1: {fileID: 7284106743644514584, guid: 19112a4fc4c3e8c4cb44db0781fa8a93, type: 3}
   particle2: {fileID: 939698731146127878, guid: d07062782ffdd414580ecb7f3e3f0181, type: 3}
   warpParticle: {fileID: 8414934701545360307, guid: a3c3f9d6bc6501449845ff1cfa2666c3, type: 3}
+  warpParticle_out: {fileID: 519696140770323664, guid: 586c2a52815e4c142bba65c378bada4a, type: 3}
   distanceFromCamera: 10
 --- !u!58 &-7669957748033208819
 CircleCollider2D:
