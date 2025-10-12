@@ -102,33 +102,33 @@ public class Mole2Manager : MonoBehaviour
                     c.a = alpha;
                     sr.color = c;
                     yield return new WaitForSeconds(0.065f);
-                    if (i == 12) 
+                    if (i == 12)
                     {
                         ParticleSystem newParticle_2 = Instantiate(warpParticle_out);
                         var mat_2 = newParticle_2.GetComponent<ParticleSystemRenderer>().material;
                         mat_2.renderQueue = 3100;
                         newParticle_2.transform.position = movePoint;
                         newParticle_2.Play();
+                        transform.position = movePoint;
+                        transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
+                        float valuableNumber = (float)(r.NextDouble() * 0.2 - 0.1);
+                        distanceFromCamera += valuableNumber;
                     }
                 }
                 alpha = 1f;
                 c.a = alpha;
                 sr.color = c;
-                transform.position = movePoint;
-                transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
-                float valuableNumber = (float)(r.NextDouble() * 0.2 - 0.1);
-                distanceFromCamera += valuableNumber;
             }
             if (moveSelect >= 0.25)
             {
                 Vector3 currentPosition = transform.position;
                 Vector2 moveDirection = Vector2.zero;
                 //いる方向と逆方向に移動
-                float speedX = (float)(r.NextDouble() * 20 + 20);
+                float speedX = (float)(r.NextDouble() * 10 + 10);
                 if (currentPosition.x > 0)
                     speedX = -speedX;
                 moveDirection.x = speedX;
-                float speedY = (float)(r.NextDouble() * 20 + 20);
+                float speedY = (float)(r.NextDouble() * 10 + 10);
                 if (currentPosition.y > 0)
                     speedY = -speedY;
                 moveDirection.y = speedY;
@@ -137,6 +137,20 @@ public class Mole2Manager : MonoBehaviour
                     transform.position += new Vector3(moveDirection.x, moveDirection.y, 0f) * Time.deltaTime;
                     yield return new WaitForSeconds(0.05f);
                 }
+            }
+        }
+        while(true)
+        {
+            yield return new WaitForSeconds(0.01f);
+            Vector3 currentPosition = transform.position;
+            //端で反転する
+            if (currentPosition.x > 9 || -9 > currentPosition.x)
+            {
+                rigidbody2D.linearVelocityX = -rigidbody2D.linearVelocityX;
+            }
+            if (currentPosition.y > 5 || -5 > currentPosition.y)
+            {
+            rigidbody2D.linearVelocityY = -rigidbody2D.linearVelocityY;
             }
         }
     }

@@ -17,9 +17,13 @@ public class Mole6Manager : MonoBehaviour
     private ParticleSystem particle1;
     [SerializeField]
     private ParticleSystem particle2;
-
+    [SerializeField]
+    private ParticleSystem warpParticle;
+    [SerializeField]
+    private ParticleSystem warpParticle_out;
 
     int hp = 10;
+    private float alpha = 1.0f;
 
     //float despawnTime = 3.0f;
 
@@ -94,24 +98,67 @@ public class Mole6Manager : MonoBehaviour
         }
     }
 
-    IEnumerator MoleMove()
+        IEnumerator MoleMove()
     {
+        System.Random r = new System.Random();
         while (distanceFromCamera >= 1.0f)
         {
-            transform.localScale = new Vector3(5 / distanceFromCamera, 5 / distanceFromCamera, 1);
-            yield return new WaitForSeconds(0.01f);
-            distanceFromCamera -= 0.05f;
-            Vector3 currentPosition = transform.position;
-            //端で反転する
-            if (currentPosition.x > 9 || -9 > currentPosition.x)
+            float moveSelect = (float)(r.NextDouble());
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            if (moveSelect < 0.25)
             {
-                rigidbody2D.linearVelocityX = -rigidbody2D.linearVelocityX;
+                ParticleSystem newParticle = Instantiate(warpParticle);
+                //effectsがmoleより前に配置されるようにする。
+                var mat = newParticle.GetComponent<ParticleSystemRenderer>().material;
+                mat.renderQueue = 3100;
+                Color c = sr.material.color;
+                newParticle.transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+                newParticle.Play();
+                Vector3 movePoint = new Vector3(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), 1.0f);
+                movePoint = Camera.main.ViewportToWorldPoint(movePoint);
+                for (int i = 0; i < 20; i++)
+                {
+                    alpha -= 0.05f;
+                    alpha = Mathf.Clamp01(alpha);
+                    c.a = alpha;
+                    sr.color = c;
+                    yield return new WaitForSeconds(0.065f);
+                    if (i == 12) 
+                    {
+                        ParticleSystem newParticle_2 = Instantiate(warpParticle_out);
+                        var mat_2 = newParticle_2.GetComponent<ParticleSystemRenderer>().material;
+                        mat_2.renderQueue = 3100;
+                        newParticle_2.transform.position = movePoint;
+                        newParticle_2.Play();
+                        transform.position = movePoint;
+                        transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
+                        float valuableNumber = (float)(r.NextDouble() * 0.2 - 0.1);
+                        distanceFromCamera += valuableNumber;
+                    }
+                }
+                alpha = 1f;
+                c.a = alpha;
+                sr.color = c;
             }
-            if (currentPosition.y > 5 || -5 > currentPosition.y)
+            if (moveSelect >= 0.25)
             {
-            rigidbody2D.linearVelocityY = -rigidbody2D.linearVelocityY;
+                Vector3 currentPosition = transform.position;
+                Vector2 moveDirection = Vector2.zero;
+                //いる方向と逆方向に移動
+                float speedX = (float)(r.NextDouble() * 20 + 20);
+                if (currentPosition.x > 0)
+                    speedX = -speedX;
+                moveDirection.x = speedX;
+                float speedY = (float)(r.NextDouble() * 20 + 20);
+                if (currentPosition.y > 0)
+                    speedY = -speedY;
+                moveDirection.y = speedY;
+                for (int i = 0; i < 26; i++)
+                {
+                    transform.position += new Vector3(moveDirection.x, moveDirection.y, 0f) * Time.deltaTime;
+                    yield return new WaitForSeconds(0.05f);
+                }
             }
         }
     }
 }
-
