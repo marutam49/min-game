@@ -14,7 +14,7 @@ public class WeaponManager : MonoBehaviour
             HitRange: 0.3f,
             FiringInterval: 0.2f,
             Attack: 10,
-            BulletSpeed: 0.5f
+            BulletSpeed: 0.25f
         )
     };
 

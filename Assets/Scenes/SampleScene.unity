@@ -617,6 +617,9 @@ MonoBehaviour:
   originObject: {fileID: 4478571685536806147, guid: d55815151cf1761489be32cf32af60bf, type: 3}
   secondObject: {fileID: 8278811132962538953, guid: 8da155c11e7efad44a61ee00ebc2c655, type: 3}
   thirdObject: {fileID: 4662252213854454840, guid: 1e5335f83efd3b345953d9f9d4e3676f, type: 3}
+  ForthObject: {fileID: 5448592771928907189, guid: 45a93cadf3c50c740ace49058875eeb1, type: 3}
+  FifthObject: {fileID: 8778741947176210695, guid: 1acd4214997cad94391e936a29312a85, type: 3}
+  SixthObject: {fileID: 999726019010209531, guid: 3ac4883f13d849544aa53227e4e95845, type: 3}
 --- !u!4 &259916412
 Transform:
   m_ObjectHideFlags: 0
@@ -699,7 +702,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5b33d5483e3e3e54ea3fd58fdbb8b40c, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 5b33d5483e3e3e54ea3fd58fdbb8b40c, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -796,13 +799,13 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 12cd2693ffb641d469d1a521e7597fa3, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 12cd2693ffb641d469d1a521e7597fa3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.15
   m_Pitch: 1
   Loop: 1
-  Mute: 1
+  Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
@@ -952,7 +955,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 7264961212739080691, guid: b423e7cb2d09f4e479f60de6e5f5c278, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 12cd2693ffb641d469d1a521e7597fa3, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 12cd2693ffb641d469d1a521e7597fa3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1049,7 +1052,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4829370061386972594, guid: b423e7cb2d09f4e479f60de6e5f5c278, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 5b33d5483e3e3e54ea3fd58fdbb8b40c, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 5b33d5483e3e3e54ea3fd58fdbb8b40c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1594,7 +1597,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000e35d6464
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0

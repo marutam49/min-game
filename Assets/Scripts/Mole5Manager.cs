@@ -4,7 +4,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 //モグラのスポーン後の処理
-public class MoleManager : MonoBehaviour
+public class Mole5Manager : MonoBehaviour
 {
     public WaveManager waveManager;
 
@@ -98,7 +98,7 @@ public class MoleManager : MonoBehaviour
     {
         while (distanceFromCamera >= 1.0f)
         {
-            transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
+            transform.localScale = new Vector3(5 / distanceFromCamera, 5 / distanceFromCamera, 1);
             yield return new WaitForSeconds(0.01f);
             distanceFromCamera -= 0.05f;
             Vector3 currentPosition = transform.position;

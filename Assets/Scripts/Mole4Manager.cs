@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
-public class Mole2Manager : MonoBehaviour
+//モグラのスポーン後の処理
+public class Mole4Manager : MonoBehaviour
 {
     public WaveManager waveManager;
 
@@ -22,25 +22,41 @@ public class Mole2Manager : MonoBehaviour
     [SerializeField]
     private ParticleSystem warpParticle_out;
 
-
-    int hp = 50;
+    int hp = 150;
+    private float alpha = 1.0f;
 
     //float despawnTime = 3.0f;
 
-    public float distanceFromCamera = 5.0f;
-    private float alpha = 1f;
+    public float distanceFromCamera = 3.0f;
 
 
     void Start()
     {
+
         rigidbody2D = GetComponent<Rigidbody2D>();
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
+        //Destroy(gameObject, despawnTime);
+        rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
         StartCoroutine(MoleMove());
     }
 
 
     void Update()
     {
+
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = -9;
+
+        //クリックされたかの判定
+        // if (hitRangeManager.doHitDecision)
+        // {
+        //     if ((mousePos - transform.position).magnitude * 2 <= transform.localScale.x + hitRangeManager.hitRange)
+        //     {
+        //         hp -= hitRangeManager.attack;
+        //     }
+        // }
+
+
         if (hp <= 0)
         {
             gameObject.GetComponent<Renderer>().material.color = Color.red;
@@ -51,10 +67,8 @@ public class Mole2Manager : MonoBehaviour
             newParticle.transform.position = this.transform.position;
             newParticle.Play();
             Destroy(newParticle.gameObject, 5.0f);
-
-            waveManager.WaveAdd();
-
             Destroy(gameObject, 0.1f);
+            waveManager.WaveAdd();
 
             enabled = false;
         }
@@ -64,10 +78,12 @@ public class Mole2Manager : MonoBehaviour
     {
         if (collider.gameObject.tag == "Bullet")
         {
-            BulletManager bulletManager = collider.gameObject.GetComponent<BulletManager>();
-            if (-0.4f < bulletManager.distanceFromCamera - distanceFromCamera && bulletManager.distanceFromCamera - distanceFromCamera < 0.4f)
+            float distance = Vector2.Distance(transform.position, collider.transform.position);
+            if (distance < 3.0f / distanceFromCamera)
             {
+                //gameObject.GetComponent<Renderer>().material.color = Color.yellow;
                 hp -= hitRangeManager.weaponState.Attack;
+                //gameObject.GetComponent<Renderer>().material.color = Color.white;
                 Destroy(collider.gameObject);
                 ParticleSystem newParticle = Instantiate(particle1);
                 newParticle.transform.position = this.transform.position;
@@ -102,7 +118,7 @@ public class Mole2Manager : MonoBehaviour
                     c.a = alpha;
                     sr.color = c;
                     yield return new WaitForSeconds(0.065f);
-                    if (i == 12)
+                    if (i == 12) 
                     {
                         ParticleSystem newParticle_2 = Instantiate(warpParticle_out);
                         var mat_2 = newParticle_2.GetComponent<ParticleSystemRenderer>().material;
@@ -124,11 +140,11 @@ public class Mole2Manager : MonoBehaviour
                 Vector3 currentPosition = transform.position;
                 Vector2 moveDirection = Vector2.zero;
                 //いる方向と逆方向に移動
-                float speedX = (float)(r.NextDouble() * 10 + 10);
+                float speedX = (float)(r.NextDouble() * 20 + 20);
                 if (currentPosition.x > 0)
                     speedX = -speedX;
                 moveDirection.x = speedX;
-                float speedY = (float)(r.NextDouble() * 10 + 10);
+                float speedY = (float)(r.NextDouble() * 20 + 20);
                 if (currentPosition.y > 0)
                     speedY = -speedY;
                 moveDirection.y = speedY;
@@ -139,19 +155,6 @@ public class Mole2Manager : MonoBehaviour
                 }
             }
         }
-        while(true)
-        {
-            yield return new WaitForSeconds(0.01f);
-            Vector3 currentPosition = transform.position;
-            //端で反転する
-            if (currentPosition.x > 9 || -9 > currentPosition.x)
-            {
-                rigidbody2D.linearVelocityX = -rigidbody2D.linearVelocityX;
-            }
-            if (currentPosition.y > 5 || -5 > currentPosition.y)
-            {
-            rigidbody2D.linearVelocityY = -rigidbody2D.linearVelocityY;
-            }
-        }
     }
 }
+
