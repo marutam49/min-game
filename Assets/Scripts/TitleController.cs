@@ -5,6 +5,6 @@ public class TitleController : MonoBehaviour
 {
     public void OnClickStartButton()
     {
-        SceneManager.LoadScene("Samplescene");
+        SceneManager.LoadScene("WeaponSelectScene");
     }
 }

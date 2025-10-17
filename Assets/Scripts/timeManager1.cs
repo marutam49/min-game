@@ -4,6 +4,7 @@ using TMPro;
 
 public class timeManager1 : MonoBehaviour
 {
+    public static string displayMessage = "a";
     public TextMeshProUGUI titleText;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,7 +21,7 @@ public class timeManager1 : MonoBehaviour
         int remainedSecond = remainedTime % 60;
         //秒数を二けた表示にする
         string s = remainedSecond.ToString("D2");
-        string displayMessage = (remainedMinute + ":" + s);
+        displayMessage = (remainedMinute + ":" + s);
         titleText.text = displayMessage;
     }
 }
