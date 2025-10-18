@@ -40,11 +40,17 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2781265033
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer 1
+  - name: Bullet
     uniqueID: 1684299235
+    locked: 0
+  - name: UI
+    uniqueID: 4050572243
     locked: 0
   m_RenderingLayers:
   - Default

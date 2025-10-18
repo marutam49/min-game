@@ -9,6 +9,8 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] AudioClip shooting1;
 
     [SerializeField] AudioSource audioSource;
+
+    int spawnNumber = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     void Start()
@@ -27,6 +29,9 @@ public class BulletSpawner : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = -8;
         Instantiate(bullet, mousePos, Quaternion.identity);
+        bullet.GetComponent<BulletManager>().bulletNumber = spawnNumber;
+        spawnNumber++;
+        
         audioSource.PlayOneShot(shooting1);
         //Debug.Log("a");
     }
