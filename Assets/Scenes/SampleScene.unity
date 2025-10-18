@@ -691,6 +691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitRangeManager: {fileID: 199052850}
+  feverParticle: {fileID: 5954485658414803508, guid: 253a23fd238ca3549b81a2b8caa89c46, type: 3}
   playerWeapon: 0
 --- !u!82 &259916417
 AudioSource:
@@ -3194,6 +3195,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696478306}
   m_CullTransparentMesh: 1
+--- !u!1001 &1792594892
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2245688567807566924, guid: 253a23fd238ca3549b81a2b8caa89c46, type: 3}
+      propertyPath: m_Name
+      value: feverEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266755727353412490, guid: 253a23fd238ca3549b81a2b8caa89c46, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.929618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266755727353412490, guid: 253a23fd238ca3549b81a2b8caa89c46, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.8156366
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266755727353412490, guid: 253a23fd238ca3549b81a2b8caa89c46, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266755727353412490, guid: 253a23fd238ca3549b81a2b8caa89c46, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266755727353412490, guid: 253a23fd238ca3549b81a2b8caa89c46, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266755727353412490, guid: 253a23fd238ca3549b81a2b8caa89c46, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266755727353412490, guid: 253a23fd238ca3549b81a2b8caa89c46, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266755727353412490, guid: 253a23fd238ca3549b81a2b8caa89c46, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266755727353412490, guid: 253a23fd238ca3549b81a2b8caa89c46, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266755727353412490, guid: 253a23fd238ca3549b81a2b8caa89c46, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 253a23fd238ca3549b81a2b8caa89c46, type: 3}
 --- !u!1 &1909627374
 GameObject:
   m_ObjectHideFlags: 0
@@ -3809,3 +3867,4 @@ SceneRoots:
   - {fileID: 931983526}
   - {fileID: 322166214}
   - {fileID: 5698586879292730903}
+  - {fileID: 1792594892}
