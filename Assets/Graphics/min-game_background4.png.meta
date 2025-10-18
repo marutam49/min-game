@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ec13ebd91c4e97648bfa2c611f524cb9
+guid: 277121c98083eb242b41d32366dbb648
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1559625029222168681
-    second: min-game_enemy2 1_0
+      213: -7185762243514924044
+    second: min-game_background4_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 550
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: min-game_enemy2 1_0
+      name: min-game_background4_0
       rect:
         serializedVersion: 2
-        x: 175
+        x: 0
         y: 0
-        width: 358
-        height: 418
+        width: 1280
+        height: 800
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 968789963b6e4a510800000000000000
-      internalID: 1559625029222168681
+      spriteID: 4f301e2bf4b074c90800000000000000
+      internalID: -7185762243514924044
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      min-game_enemy2 1_0: 1559625029222168681
+      min-game_background4_0: -7185762243514924044
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
