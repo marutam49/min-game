@@ -23,11 +23,11 @@ public class Mole2Manager : MonoBehaviour
     private ParticleSystem warpParticle_out;
 
 
-    int hp = 50;
+    int hp = 150;
 
     //float despawnTime = 3.0f;
 
-    public float distanceFromCamera = 5.0f;
+    public float distanceFromCamera = 0.1f;
     private float alpha = 1f;
 
 
@@ -124,11 +124,11 @@ public class Mole2Manager : MonoBehaviour
                 Vector3 currentPosition = transform.position;
                 Vector2 moveDirection = Vector2.zero;
                 //いる方向と逆方向に移動
-                float speedX = (float)(r.NextDouble() * 10 + 10);
+                float speedX = (float)(r.NextDouble() * 10 + 7);
                 if (currentPosition.x > 0)
                     speedX = -speedX;
                 moveDirection.x = speedX;
-                float speedY = (float)(r.NextDouble() * 10 + 10);
+                float speedY = (float)(r.NextDouble() * 10 + 7);
                 if (currentPosition.y > 0)
                     speedY = -speedY;
                 moveDirection.y = speedY;

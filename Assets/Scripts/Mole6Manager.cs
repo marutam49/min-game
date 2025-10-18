@@ -22,7 +22,7 @@ public class Mole6Manager : MonoBehaviour
     [SerializeField]
     private ParticleSystem warpParticle_out;
 
-    int hp = 10;
+    int hp = 1000;
     private float alpha = 1.0f;
 
     //float despawnTime = 3.0f;

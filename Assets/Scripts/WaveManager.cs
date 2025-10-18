@@ -7,8 +7,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private MoleSpawner moleSpawner;
 
     public static int wave = 1;
-    public int enemyBeatNumber = 0;
-    public int waveEnemyBeatQuota = 1;
+    public float enemyBeatNumber = 0;
+    public float waveEnemyBeatQuota = 1.0f;
 
     void Start()
     {
