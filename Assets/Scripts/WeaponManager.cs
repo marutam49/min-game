@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
@@ -5,8 +6,10 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] HitRangeManager hitRangeManager;
 
     BulletManager bulletManager;
+    WaveManager waveManager;
 
     public int playerWeapon = 0;
+    public static int feverFlag = 0;
 
     //{hitRange, firingInterval, attack, bulletSpeed}(bulletSpeedは未実装)
     WeaponState[] weaponFirstState = new WeaponState[]{
@@ -23,6 +26,7 @@ public class WeaponManager : MonoBehaviour
     {
         bulletManager = FindAnyObjectByType<BulletManager>();
         WeaponReset();
+        StartCoroutine(feverTime());
     }
 
     // Update is called once per frame
@@ -35,7 +39,45 @@ public class WeaponManager : MonoBehaviour
     {
         hitRangeManager.weaponState = weaponFirstState[0];
     }
+
+    private int feverCount;
+    private IEnumerator feverTime()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.01f);
+            feverCount += 1;
+
+            if (feverCount >= 2000)
+            {
+                feverCount = 0;
+                feverFlag = 0;
+            }
+            else
+            {
+                if (feverFlag >= 5)
+                {
+                    var state = hitRangeManager.weaponState;
+                    hitRangeManager.weaponState = new WeaponState(
+                    HitRange: state.HitRange,
+                    FiringInterval: 0.01f,
+                    Attack: state.Attack,
+                    BulletSpeed: state.BulletSpeed
+                    );
+                    yield return new WaitForSeconds(5.0f);
+                    hitRangeManager.weaponState = new WeaponState(
+                    HitRange: state.HitRange,
+                    FiringInterval: 0.2f,
+                    Attack: state.Attack,
+                    BulletSpeed: state.BulletSpeed
+                    );
+                    feverFlag = 0;
+                }
+            }
+        }
+    }
 }
+
 
 
 public record WeaponState(

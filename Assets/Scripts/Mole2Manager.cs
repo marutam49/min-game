@@ -9,6 +9,7 @@ public class Mole2Manager : MonoBehaviour
     public WaveManager waveManager;
 
     HitRangeManager hitRangeManager;
+    WeaponManager weaponManager;
 
     Rigidbody2D rigidbody2D;
 
@@ -47,6 +48,7 @@ public class Mole2Manager : MonoBehaviour
             ScoreManager.score += 5;
             waveManager.enemyBeatNumber += 1;
             LevelManager.exp += 5;
+            WeaponManager.feverFlag += 1;
             ParticleSystem newParticle = Instantiate(particle2);
             newParticle.transform.position = this.transform.position;
             newParticle.Play();
