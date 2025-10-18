@@ -22,6 +22,7 @@ public class Mole6Manager : MonoBehaviour
     private ParticleSystem warpParticle;
     [SerializeField]
     private ParticleSystem warpParticle_out;
+    Renderer mole6Renderer;
 
     int hp = 1000;
     private float alpha = 1.0f;
@@ -29,6 +30,8 @@ public class Mole6Manager : MonoBehaviour
     //float despawnTime = 3.0f;
 
     public float distanceFromCamera = 3.0f;
+    public int moleNumber;
+
 
 
     void Start()
@@ -36,6 +39,8 @@ public class Mole6Manager : MonoBehaviour
 
         rigidbody2D = GetComponent<Rigidbody2D>();
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
+        mole6Renderer = GetComponent<Renderer>();
+        mole6Renderer.sortingOrder = -moleNumber;
         //Destroy(gameObject, despawnTime);
         rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
         StartCoroutine(MoleMove());

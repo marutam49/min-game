@@ -23,6 +23,8 @@ public class Mole4Manager : MonoBehaviour
     [SerializeField]
     private ParticleSystem warpParticle_out;
 
+    Renderer mole4Renderer;
+
     int hp = 500;
     private float alpha = 1.0f;
 
@@ -30,12 +32,17 @@ public class Mole4Manager : MonoBehaviour
 
     public float distanceFromCamera = 3.0f;
 
+    public int moleNumber;
+
+
 
     void Start()
     {
 
         rigidbody2D = GetComponent<Rigidbody2D>();
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
+        mole4Renderer = GetComponent<Renderer>();
+        mole4Renderer.sortingOrder = -moleNumber;
         //Destroy(gameObject, despawnTime);
         rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
         StartCoroutine(MoleMove());

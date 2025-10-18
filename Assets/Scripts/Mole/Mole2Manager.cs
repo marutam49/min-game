@@ -23,6 +23,8 @@ public class Mole2Manager : MonoBehaviour
     [SerializeField]
     private ParticleSystem warpParticle_out;
 
+    Renderer mole2Renderer;
+
 
     int hp = 150;
 
@@ -31,11 +33,17 @@ public class Mole2Manager : MonoBehaviour
     public float distanceFromCamera = 0.1f;
     private float alpha = 1f;
 
+    public int moleNumber;
+
+
 
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
+        mole2Renderer = GetComponent<Renderer>();
+
+        mole2Renderer.sortingOrder = -moleNumber;
         StartCoroutine(MoleMove());
     }
 

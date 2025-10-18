@@ -18,6 +18,10 @@ public class Mole3Manager : MonoBehaviour
     private ParticleSystem particle1;
     [SerializeField]
     private ParticleSystem particle2;
+    Renderer mole3Renderer;
+
+    public int moleNumber;
+
 
 
     int hp = 10;
@@ -32,6 +36,8 @@ public class Mole3Manager : MonoBehaviour
 
         rigidbody2D = GetComponent<Rigidbody2D>();
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
+        mole3Renderer = GetComponent<Renderer>();
+        mole3Renderer.sortingOrder = -moleNumber;
         //Destroy(gameObject, despawnTime);
         rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
         StartCoroutine(MoleMove());

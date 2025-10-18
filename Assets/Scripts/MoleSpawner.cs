@@ -73,6 +73,8 @@ public class MoleSpawner : MonoBehaviour
 
     IEnumerator Spawn()
     {
+        int spawnNumber = 0;//moleの前後関係用
+
         while (true)
         {
             yield return new WaitForSeconds(stateNow.SpawnInterval);
@@ -84,6 +86,9 @@ public class MoleSpawner : MonoBehaviour
                     Vector3 spawnPoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
                     spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
                     Instantiate(originObject, spawnPoint, Quaternion.identity);
+
+                    originObject.GetComponent<MoleManager>().moleNumber = spawnNumber;
+                    spawnNumber++;
                 }
             }
             if (WaveManager.wave == 2 && wave2SpawnFlag)
@@ -92,6 +97,9 @@ public class MoleSpawner : MonoBehaviour
                 spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
                 Instantiate(secondObject, spawnPoint, Quaternion.identity);
                 wave2SpawnFlag = false;
+
+                secondObject.GetComponent<Mole2Manager>().moleNumber = spawnNumber;
+                spawnNumber++;
             }
             if (WaveManager.wave == 3)
             {
@@ -100,6 +108,9 @@ public class MoleSpawner : MonoBehaviour
                     Vector3 spawnPoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
                     spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
                     Instantiate(thirdObject, spawnPoint, Quaternion.identity);
+
+                    thirdObject.GetComponent<Mole3Manager>().moleNumber = spawnNumber;
+                    spawnNumber++;
                 }
             }
             if (WaveManager.wave == 4 && wave4SpawnFlag)
@@ -108,6 +119,9 @@ public class MoleSpawner : MonoBehaviour
                 spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
                 Instantiate(ForthObject, spawnPoint, Quaternion.identity);
                 wave4SpawnFlag = false;
+
+                ForthObject.GetComponent<Mole4Manager>().moleNumber = spawnNumber;
+                spawnNumber++;
             }
             if (WaveManager.wave == 5)
             {
@@ -116,6 +130,9 @@ public class MoleSpawner : MonoBehaviour
                     Vector3 spawnPoint = new Vector3(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), 1.0f);
                     spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
                     Instantiate(FifthObject, spawnPoint, Quaternion.identity);
+
+                    FifthObject.GetComponent<Mole5Manager>().moleNumber = spawnNumber;
+                    spawnNumber++;
                 }
             }
             if (WaveManager.wave == 6 && wave6SpawnFlag)
@@ -124,6 +141,9 @@ public class MoleSpawner : MonoBehaviour
                 spawnPoint = Camera.main.ViewportToWorldPoint(spawnPoint);
                 Instantiate(SixthObject, spawnPoint, Quaternion.identity);
                 wave6SpawnFlag = false;
+
+                SixthObject.GetComponent<Mole6Manager>().moleNumber = spawnNumber;
+                spawnNumber++;
             }
         }
     }

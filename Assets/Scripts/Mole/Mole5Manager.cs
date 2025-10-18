@@ -19,6 +19,8 @@ public class Mole5Manager : MonoBehaviour
     [SerializeField]
     private ParticleSystem particle2;
 
+    Renderer mole5Renderer;
+
 
     int hp = 10;
 
@@ -26,12 +28,16 @@ public class Mole5Manager : MonoBehaviour
 
     public float distanceFromCamera = 3.0f;
 
+    public int moleNumber;
+
 
     void Start()
     {
 
         rigidbody2D = GetComponent<Rigidbody2D>();
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
+        mole5Renderer = GetComponent<Renderer>();
+        mole5Renderer.sortingOrder = -moleNumber;
         //Destroy(gameObject, despawnTime);
         rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
         StartCoroutine(MoleMove());
