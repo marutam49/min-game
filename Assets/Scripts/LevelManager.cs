@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
             var state = hitRangeManager.weaponState;
             hitRangeManager.weaponState = new WeaponState(
                 HitRange: state.HitRange + 0.01f,
-                FiringInterval: state.FiringInterval - 0.01f,
+                FiringInterval: state.FiringInterval /*- 0.01f*/,
                 Attack: state.Attack + 1,
                 BulletSpeed: state.BulletSpeed
             );

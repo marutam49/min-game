@@ -11,6 +11,7 @@ public class MoleManager : MonoBehaviour
     HitRangeManager hitRangeManager;
 
     Rigidbody2D rigidbody2D;
+    WeaponManager weaponManager;
 
     [SerializeField]
     [Tooltip("発生させるエフェクト（パーティクル）")]
@@ -33,7 +34,18 @@ public class MoleManager : MonoBehaviour
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
         //Destroy(gameObject, despawnTime);
         rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
-        StartCoroutine(MoleMove());
+        System.Random r = new System.Random();
+        float moveSelect = (float)(r.NextDouble());        
+
+　　　　if (moveSelect >= 0.5)
+        {
+            StartCoroutine(MoleMove1());
+            rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
+        }
+        else
+        {
+            StartCoroutine(MoleMove2());
+        }
     }
 
 
@@ -59,6 +71,8 @@ public class MoleManager : MonoBehaviour
             ScoreManager.score += 5;
             waveManager.enemyBeatNumber += 0.5f;
             LevelManager.exp += 5;
+            WeaponManager.feverFlag += 1;
+            Debug.Log(WeaponManager.feverFlag);
             ParticleSystem newParticle = Instantiate(particle2);
             newParticle.transform.position = this.transform.position;
             newParticle.Play();
@@ -94,7 +108,7 @@ public class MoleManager : MonoBehaviour
         }
     }
 
-    IEnumerator MoleMove()
+    IEnumerator MoleMove1()
     {
         while (distanceFromCamera >= 1.0f)
         {
@@ -109,7 +123,35 @@ public class MoleManager : MonoBehaviour
             }
             if (currentPosition.y > 5 || -5 > currentPosition.y)
             {
-            rigidbody2D.linearVelocityY = -rigidbody2D.linearVelocityY;
+                rigidbody2D.linearVelocityY = -rigidbody2D.linearVelocityY;
+            }
+        }
+
+        Destroy(this.gameObject);
+    }
+        IEnumerator MoleMove2()
+    {
+        Vector2 center = new Vector2(transform.position.x + Random.Range(-3f, 3f), transform.position.y + Random.Range(-3f, 3f));
+        float angleSpeed = Random.Range(-4f, 4f);
+        float radius = Random.Range(1f, 3f);
+        float angle = Random.Range(0f, 2 * Mathf.PI);
+        while (distanceFromCamera >= 1.0f)
+        {
+            transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
+            angle += angleSpeed * Time.deltaTime;
+            Vector2 pos = center + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius;
+            transform.position = pos;
+            yield return new WaitForSeconds(0.01f);
+            distanceFromCamera -= 0.05f;
+            Vector3 currentPosition = transform.position;
+            //端で反転する
+            if (currentPosition.x > 9 || -9 > currentPosition.x)
+            {
+                rigidbody2D.linearVelocityX = -rigidbody2D.linearVelocityX;
+            }
+            if (currentPosition.y > 5 || -5 > currentPosition.y)
+            {
+                rigidbody2D.linearVelocityY = -rigidbody2D.linearVelocityY;
             }
         }
 

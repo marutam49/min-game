@@ -11,6 +11,7 @@ public class Mole3Manager : MonoBehaviour
     HitRangeManager hitRangeManager;
 
     Rigidbody2D rigidbody2D;
+    WeaponManager weaponManager;
 
     [SerializeField]
     [Tooltip("発生させるエフェクト（パーティクル）")]
@@ -59,6 +60,7 @@ public class Mole3Manager : MonoBehaviour
             ScoreManager.score += 5;
             waveManager.enemyBeatNumber += 0.2f;
             LevelManager.exp += 5;
+            WeaponManager.feverFlag += 1;
             ParticleSystem newParticle = Instantiate(particle2);
             newParticle.transform.position = this.transform.position;
             newParticle.Play();
