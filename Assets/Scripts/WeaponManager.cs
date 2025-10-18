@@ -7,6 +7,8 @@ public class WeaponManager : MonoBehaviour
 
     BulletManager bulletManager;
     WaveManager waveManager;
+    [SerializeField]
+    private ParticleSystem feverParticle;
 
     public int playerWeapon = 0;
     public static int feverFlag = 0;
@@ -64,6 +66,11 @@ public class WeaponManager : MonoBehaviour
                     Attack: state.Attack,
                     BulletSpeed: state.BulletSpeed
                     );
+                    ParticleSystem feverInstance = Instantiate(feverParticle);
+                    var feverMat = feverInstance.GetComponent<ParticleSystemRenderer>().material;
+                    feverMat.renderQueue = 3000;
+                    feverInstance.transform.position = new Vector3(0,0,0);
+                    feverInstance.Play();
                     yield return new WaitForSeconds(5.0f);
                     hitRangeManager.weaponState = new WeaponState(
                     HitRange: state.HitRange,
