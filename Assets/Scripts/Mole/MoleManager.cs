@@ -22,6 +22,8 @@ public class MoleManager : MonoBehaviour
     Renderer moleRenderer;
     SpriteRenderer spriteRenderer;
 
+    RemainedTimeManager remainedTimeManager;
+
     int hp = 10;
 
     //float despawnTime = 3.0f;
@@ -33,7 +35,7 @@ public class MoleManager : MonoBehaviour
 
     void Start()
     {
-
+        remainedTimeManager = FindAnyObjectByType<RemainedTimeManager>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
         moleRenderer = GetComponent<Renderer>();
@@ -139,6 +141,7 @@ public class MoleManager : MonoBehaviour
         }
 
         Destroy(this.gameObject);
+        remainedTimeManager.RemainedTimeDecrease(1.0f);
     }
         IEnumerator MoleMove2()
     {
@@ -168,5 +171,6 @@ public class MoleManager : MonoBehaviour
         }
 
         Destroy(this.gameObject);
+        remainedTimeManager.RemainedTimeDecrease(1.0f);
     }
 }

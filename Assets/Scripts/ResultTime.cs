@@ -13,7 +13,7 @@ public class ResultLevelText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        string Time = timeManager1.displayMessage;
+        string Time = RemainedTimeManager.displayMessage;
         ResultTime.text = Time;
         
     }
