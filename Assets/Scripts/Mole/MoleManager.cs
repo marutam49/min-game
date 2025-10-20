@@ -20,6 +20,7 @@ public class MoleManager : MonoBehaviour
     private ParticleSystem particle2;
 
     Renderer moleRenderer;
+    SpriteRenderer spriteRenderer;
 
     int hp = 10;
 
@@ -36,6 +37,7 @@ public class MoleManager : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
         moleRenderer = GetComponent<Renderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         //Destroy(gameObject, despawnTime);
         rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
         System.Random r = new System.Random();
@@ -121,6 +123,7 @@ public class MoleManager : MonoBehaviour
         while (distanceFromCamera >= 1.0f)
         {
             transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1 - distanceFromCamera * 0.02f);
             yield return new WaitForSeconds(0.01f);
             distanceFromCamera -= 0.05f;
             Vector3 currentPosition = transform.position;
@@ -146,6 +149,7 @@ public class MoleManager : MonoBehaviour
         while (distanceFromCamera >= 1.0f)
         {
             transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1 - distanceFromCamera * 0.02f);
             angle += angleSpeed * Time.deltaTime;
             Vector2 pos = center + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius;
             transform.position = pos;
