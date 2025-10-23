@@ -53,6 +53,10 @@ public class WeaponManager : MonoBehaviour
 
     void WeaponReset()
     {
+        if (weaponShowManager.selectWeaponNumber < 1 || weaponShowManager.selectWeaponNumber > 3)
+        {
+            weaponShowManager.selectWeaponNumber = 1;
+        }
         hitRangeManager.weaponState = weaponFirstState[weaponShowManager.selectWeaponNumber - 1];
     }
 

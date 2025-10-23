@@ -10,7 +10,7 @@ public class WeaponSelectButton : MonoBehaviour
 
     void Start()
     {
-        selectWeaponNumber = 0;
+        selectWeaponNumber = 1;
         HideAllWeapons();
     }
 

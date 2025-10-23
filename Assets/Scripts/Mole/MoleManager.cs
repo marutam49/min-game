@@ -43,7 +43,7 @@ public class MoleManager : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         screenShaker = FindAnyObjectByType<ScreenShaker>();
         //Destroy(gameObject, despawnTime);
-        rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
+        //rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
         System.Random r = new System.Random();
         float moveSelect = (float)(r.NextDouble());
 

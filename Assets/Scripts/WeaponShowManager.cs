@@ -8,7 +8,7 @@ public class WeaponShowManager : MonoBehaviour
     public GameObject Weapon1;
     public GameObject Weapon2;
     public GameObject Weapon3;
-    public int selectWeaponNumber;
+    public int selectWeaponNumber = 1;
     void Awake()
     {
         Weapon1.SetActive(false);
