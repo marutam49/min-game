@@ -10,6 +10,8 @@ public class WeaponManager : MonoBehaviour
     [SerializeField]
     private ParticleSystem feverParticle;
 
+    [SerializeField] WeaponShowManager weaponShowManager;
+
     public int playerWeapon = 0;
     public static int feverFlag = 0;
 
@@ -20,6 +22,18 @@ public class WeaponManager : MonoBehaviour
             FiringInterval: 0.2f,
             Attack: 10,
             BulletSpeed: 0.25f
+        ),
+        new WeaponState(
+            HitRange: 0.1f,
+            FiringInterval: 0.10f,
+            Attack: 10,
+            BulletSpeed: 0.4f
+        ),
+        new WeaponState(
+            HitRange: 1.5f,
+            FiringInterval: 1f,
+            Attack: 10,
+            BulletSpeed: 0.10f
         )
     };
 
@@ -39,7 +53,7 @@ public class WeaponManager : MonoBehaviour
 
     void WeaponReset()
     {
-        hitRangeManager.weaponState = weaponFirstState[0];
+        hitRangeManager.weaponState = weaponFirstState[weaponShowManager.selectWeaponNumber - 1];
     }
 
     private int feverCount;
