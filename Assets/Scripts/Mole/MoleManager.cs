@@ -23,6 +23,7 @@ public class MoleManager : MonoBehaviour
     SpriteRenderer spriteRenderer;
 
     RemainedTimeManager remainedTimeManager;
+    ScreenShaker screenShaker;
 
     int hp = 10;
 
@@ -40,6 +41,7 @@ public class MoleManager : MonoBehaviour
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
         moleRenderer = GetComponent<Renderer>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        screenShaker = FindAnyObjectByType<ScreenShaker>();
         //Destroy(gameObject, despawnTime);
         rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
         System.Random r = new System.Random();
@@ -142,6 +144,7 @@ public class MoleManager : MonoBehaviour
 
         Destroy(this.gameObject);
         remainedTimeManager.RemainedTimeDecrease(1.0f);
+        screenShaker.Shake();
     }
         IEnumerator MoleMove2()
     {
@@ -172,5 +175,6 @@ public class MoleManager : MonoBehaviour
 
         Destroy(this.gameObject);
         remainedTimeManager.RemainedTimeDecrease(1.0f);
+        screenShaker.Shake();
     }
 }
