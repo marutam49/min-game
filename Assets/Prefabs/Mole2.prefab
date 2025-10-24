@@ -107,7 +107,9 @@ MonoBehaviour:
   particle2: {fileID: 939698731146127878, guid: d07062782ffdd414580ecb7f3e3f0181, type: 3}
   warpParticle: {fileID: 8414934701545360307, guid: a3c3f9d6bc6501449845ff1cfa2666c3, type: 3}
   warpParticle_out: {fileID: 519696140770323664, guid: 586c2a52815e4c142bba65c378bada4a, type: 3}
+  Mole2Bullet: {fileID: 4478571685536806147, guid: d55815151cf1761489be32cf32af60bf, type: 3}
   distanceFromCamera: 10
+  moleNumber: 0
 --- !u!58 &-7669957748033208819
 CircleCollider2D:
   m_ObjectHideFlags: 0

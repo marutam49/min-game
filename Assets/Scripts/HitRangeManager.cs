@@ -11,7 +11,7 @@ public class HitRangeManager : MonoBehaviour
         
     void Start()
     {
-
+        
     }
 
 
