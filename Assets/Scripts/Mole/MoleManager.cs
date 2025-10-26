@@ -24,6 +24,7 @@ public class MoleManager : MonoBehaviour
 
     RemainedTimeManager remainedTimeManager;
     ScreenShaker screenShaker;
+    FeverGaugeController feverGaugeController;
 
     int hp = 10;
 
@@ -33,7 +34,6 @@ public class MoleManager : MonoBehaviour
 
     public int moleNumber;
 
-
     void Start()
     {
         remainedTimeManager = FindAnyObjectByType<RemainedTimeManager>();
@@ -42,6 +42,8 @@ public class MoleManager : MonoBehaviour
         moleRenderer = GetComponent<Renderer>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         screenShaker = FindAnyObjectByType<ScreenShaker>();
+        feverGaugeController = FindAnyObjectByType<FeverGaugeController>();
+
         //Destroy(gameObject, despawnTime);
         //rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
         System.Random r = new System.Random();
@@ -86,6 +88,7 @@ public class MoleManager : MonoBehaviour
             waveManager.enemyBeatNumber += 0.5f;
             LevelManager.exp += 5;
             WeaponManager.feverFlag += 1;
+            feverGaugeController.feverGaugePlus();
             Debug.Log(WeaponManager.feverFlag);
             ParticleSystem newParticle = Instantiate(particle2);
             newParticle.transform.position = this.transform.position;
