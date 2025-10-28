@@ -60,7 +60,7 @@ public class WeaponManager : MonoBehaviour
         hitRangeManager.weaponState = weaponFirstState[weaponShowManager.selectWeaponNumber - 1];
     }
 
-    private int feverCount;
+    public static int feverCount;
     private IEnumerator feverTime()
     {
         while (true)
