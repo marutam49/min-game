@@ -12,6 +12,8 @@ public class Mole2Manager : MonoBehaviour
     WeaponManager weaponManager;
 
     Rigidbody2D rigidbody2D;
+    ScreenShaker screenShaker;
+    RemainedTimeManager remainedTimeManager;
 
     [SerializeField]
     [Tooltip("発生させるエフェクト（パーティクル）")]
@@ -97,6 +99,10 @@ public class Mole2Manager : MonoBehaviour
                 newParticle.transform.position = this.transform.position;
                 newParticle.Play();
                 Destroy(newParticle.gameObject, 5.0f);
+
+                        //remainedTimeManager.RemainedTimeDecrease(1.0f);
+                screenShaker.Shake();
+                remainedTimeManager.remainedTime -= 1;
 
             }
         }

@@ -176,7 +176,7 @@ public class MoleManager : MonoBehaviour
         }
 
         Destroy(this.gameObject);
-        remainedTimeManager.RemainedTimeDecrease(1.0f);
+        //remainedTimeManager.RemainedTimeDecrease(1.0f);
         screenShaker.Shake();
         remainedTimeManager.remainedTime -= 1;
     }

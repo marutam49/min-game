@@ -75,10 +75,7 @@ public class Mole6Manager : MonoBehaviour
             newParticle.Play();
             Destroy(newParticle.gameObject, 5.0f);
 
-            if (waveManager.enemyBeatNumber >= waveManager.waveEnemyBeatQuota)
-            {
-                waveManager.WaveAdd();
-            }
+            waveManager.WaveAdd();
 
             Destroy(gameObject, 0.1f);
 

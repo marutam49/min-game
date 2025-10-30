@@ -9,6 +9,8 @@ public class Mole3Manager : MonoBehaviour
     public WaveManager waveManager;
 
     HitRangeManager hitRangeManager;
+    ScreenShaker screenShaker;
+    RemainedTimeManager remainedTimeManager;
 
     Rigidbody2D rigidbody2D;
     WeaponManager weaponManager;
@@ -122,5 +124,8 @@ public class Mole3Manager : MonoBehaviour
         }
 
         Destroy(this.gameObject);
+        //remainedTimeManager.RemainedTimeDecrease(1.0f);
+        screenShaker.Shake();
+        remainedTimeManager.remainedTime -= 1;
     }
 }
