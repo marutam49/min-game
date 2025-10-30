@@ -11,7 +11,7 @@ public class RemainedTimeManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        remainedTime = 180;
+        remainedTime = 300;
     }
 
     // Update is called once per frame
