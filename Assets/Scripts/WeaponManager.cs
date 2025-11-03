@@ -10,7 +10,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField]
     private ParticleSystem feverParticle;
 
-    [SerializeField] WeaponShowManager weaponShowManager;
+    WeaponShowManager weaponShowManager;
 
     public int playerWeapon = 0;
     public static int feverFlag = 0;
@@ -53,10 +53,6 @@ public class WeaponManager : MonoBehaviour
 
     void WeaponReset()
     {
-        if (weaponShowManager.selectWeaponNumber < 1 || weaponShowManager.selectWeaponNumber > 3)
-        {
-            weaponShowManager.selectWeaponNumber = 1;
-        }
         hitRangeManager.weaponState = weaponFirstState[weaponShowManager.selectWeaponNumber - 1];
     }
 
@@ -77,22 +73,74 @@ public class WeaponManager : MonoBehaviour
             {
                 if (feverFlag >= 5)
                 {
+                    if (weaponShowManager.selectWeaponNumber == 1)
+                    {
+                        var state = hitRangeManager.weaponState;
+                        float wavechecker_0 = 1 + WaveManager.wave * 0.2f;
+                        hitRangeManager.weaponState = new WeaponState(
+                        HitRange: state.HitRange * wavechecker_0,
+                        FiringInterval: state.FiringInterval / wavechecker_0,
+                        Attack: state.Attack,
+                        BulletSpeed: state.BulletSpeed * wavechecker_0
+                        );
+                        ParticleSystem feverInstance = Instantiate(feverParticle);
+                        var feverMat = feverInstance.GetComponent<ParticleSystemRenderer>().material;
+                        feverMat.renderQueue = 3000;
+                        feverInstance.transform.position = new Vector3(0, 0, 0);
+                        feverInstance.Play();
+                        yield return new WaitForSeconds(5.0f);
+                        hitRangeManager.weaponState = new WeaponState(
+                        HitRange: state.HitRange / wavechecker_0,
+                        FiringInterval: state.FiringInterval * wavechecker_0,
+                        Attack: state.Attack,
+                        BulletSpeed: state.BulletSpeed / wavechecker_0
+                        );
+                        feverFlag = 0;
+                    }
+                }
+                if (weaponShowManager.selectWeaponNumber == 2)
+                {
                     var state = hitRangeManager.weaponState;
+                    float wavechecker_1 = 2 * WaveManager.wave;
                     hitRangeManager.weaponState = new WeaponState(
                     HitRange: state.HitRange,
-                    FiringInterval: (7 - WaveManager.wave) * 0.01f,
+                    FiringInterval: state.FiringInterval / wavechecker_1,
                     Attack: state.Attack,
                     BulletSpeed: state.BulletSpeed
                     );
                     ParticleSystem feverInstance = Instantiate(feverParticle);
                     var feverMat = feverInstance.GetComponent<ParticleSystemRenderer>().material;
                     feverMat.renderQueue = 3000;
-                    feverInstance.transform.position = new Vector3(0,0,0);
+                    feverInstance.transform.position = new Vector3(0, 0, 0);
                     feverInstance.Play();
                     yield return new WaitForSeconds(5.0f);
                     hitRangeManager.weaponState = new WeaponState(
                     HitRange: state.HitRange,
-                    FiringInterval: 0.2f,
+                    FiringInterval: state.FiringInterval * wavechecker_1,
+                    Attack: state.Attack,
+                    BulletSpeed: state.BulletSpeed
+                    );
+                    feverFlag = 0;
+                }
+                if (weaponShowManager.selectWeaponNumber == 3)
+                {
+                    var state = hitRangeManager.weaponState;
+                    float wavechecker_2 = 2 * WaveManager.wave;
+                    hitRangeManager.weaponState = new WeaponState(
+                    HitRange: state.HitRange * wavechecker_2,
+                    FiringInterval: state.FiringInterval,
+                    Attack: state.Attack,
+                    BulletSpeed: state.BulletSpeed
+                    );
+                    ParticleSystem feverInstance = Instantiate(feverParticle);
+                    var feverMat = feverInstance.GetComponent<ParticleSystemRenderer>().material;
+                    feverMat.renderQueue = 3000;
+                    feverInstance.transform.position = new Vector3(0, 0, 0);
+                    feverInstance.Play();
+                    yield return new WaitForSeconds(5.0f);
+                    hitRangeManager.weaponState = new WeaponState(
+                    HitRange: state.HitRange / wavechecker_2,
+                    FiringInterval: state.FiringInterval,
                     Attack: state.Attack,
                     BulletSpeed: state.BulletSpeed
                     );
@@ -102,8 +150,6 @@ public class WeaponManager : MonoBehaviour
         }
     }
 }
-
-
 
 public record WeaponState(
     float HitRange,
