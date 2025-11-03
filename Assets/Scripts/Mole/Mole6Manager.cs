@@ -69,7 +69,6 @@ public class Mole6Manager : MonoBehaviour
             ScoreManager.score += 5;
             waveManager.enemyBeatNumber += 1;
             LevelManager.exp += 5;
-            WeaponManager.feverFlag += 1;
             ParticleSystem newParticle = Instantiate(particle2);
             newParticle.transform.position = this.transform.position;
             newParticle.Play();
@@ -92,6 +91,7 @@ public class Mole6Manager : MonoBehaviour
             {
                 //gameObject.GetComponent<Renderer>().material.color = Color.yellow;
                 hp -= hitRangeManager.weaponState.Attack;
+                WeaponManager.feverFlag += 1;
                 //gameObject.GetComponent<Renderer>().material.color = Color.white;
                 Destroy(collider.gameObject);
                 ParticleSystem newParticle = Instantiate(particle1);

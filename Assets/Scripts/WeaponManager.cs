@@ -80,7 +80,7 @@ public class WeaponManager : MonoBehaviour
                     var state = hitRangeManager.weaponState;
                     hitRangeManager.weaponState = new WeaponState(
                     HitRange: state.HitRange,
-                    FiringInterval: 0.01f,
+                    FiringInterval: (7 - WaveManager.wave) * 0.01f,
                     Attack: state.Attack,
                     BulletSpeed: state.BulletSpeed
                     );

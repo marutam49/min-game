@@ -65,7 +65,6 @@ public class Mole2Manager : MonoBehaviour
             ScoreManager.score += 5;
             waveManager.enemyBeatNumber += 1;
             LevelManager.exp += 5;
-            WeaponManager.feverFlag += 1;
             ParticleSystem newParticle = Instantiate(particle2);
             newParticle.transform.position = this.transform.position;
             newParticle.Play();
@@ -87,6 +86,7 @@ public class Mole2Manager : MonoBehaviour
             if (-0.4f < bulletManager.distanceFromCamera - distanceFromCamera && bulletManager.distanceFromCamera - distanceFromCamera < 0.4f)
             {
                 hp -= hitRangeManager.weaponState.Attack;
+                WeaponManager.feverFlag += 1;
                 Destroy(collider.gameObject);
                 // ParticleSystem newParticle = Instantiate(particle1);
                 // newParticle.transform.position = this.transform.position;
