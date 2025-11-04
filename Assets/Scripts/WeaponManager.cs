@@ -15,6 +15,8 @@ public class WeaponManager : MonoBehaviour
     public int playerWeapon = 0;
     public static int feverFlag = 0;
 
+    private int kariban = 3;
+
     //{hitRange, firingInterval, attack, bulletSpeed}(bulletSpeedは未実装)
     WeaponState[] weaponFirstState = new WeaponState[]{
         new WeaponState(
@@ -53,7 +55,8 @@ public class WeaponManager : MonoBehaviour
 
     void WeaponReset()
     {
-        hitRangeManager.weaponState = weaponFirstState[weaponShowManager.selectWeaponNumber - 1];
+        //hitRangeManager.weaponState = weaponFirstState[(int)weaponShowManager.selectWeaponNumber - 1];
+        hitRangeManager.weaponState = weaponFirstState[kariban - 1];
     }
 
     public static int feverCount;
@@ -73,7 +76,8 @@ public class WeaponManager : MonoBehaviour
             {
                 if (feverFlag >= 5)
                 {
-                    if (weaponShowManager.selectWeaponNumber == 1)
+                    //if (weaponShowManager.selectWeaponNumber == 1)
+                    if (kariban == 1)
                     {
                         var state = hitRangeManager.weaponState;
                         float wavechecker_0 = 1 + WaveManager.wave * 0.2f;
@@ -97,54 +101,56 @@ public class WeaponManager : MonoBehaviour
                         );
                         feverFlag = 0;
                     }
-                }
-                if (weaponShowManager.selectWeaponNumber == 2)
-                {
-                    var state = hitRangeManager.weaponState;
-                    float wavechecker_1 = 2 * WaveManager.wave;
-                    hitRangeManager.weaponState = new WeaponState(
-                    HitRange: state.HitRange,
-                    FiringInterval: state.FiringInterval / wavechecker_1,
-                    Attack: state.Attack,
-                    BulletSpeed: state.BulletSpeed
-                    );
-                    ParticleSystem feverInstance = Instantiate(feverParticle);
-                    var feverMat = feverInstance.GetComponent<ParticleSystemRenderer>().material;
-                    feverMat.renderQueue = 3000;
-                    feverInstance.transform.position = new Vector3(0, 0, 0);
-                    feverInstance.Play();
-                    yield return new WaitForSeconds(5.0f);
-                    hitRangeManager.weaponState = new WeaponState(
-                    HitRange: state.HitRange,
-                    FiringInterval: state.FiringInterval * wavechecker_1,
-                    Attack: state.Attack,
-                    BulletSpeed: state.BulletSpeed
-                    );
-                    feverFlag = 0;
-                }
-                if (weaponShowManager.selectWeaponNumber == 3)
-                {
-                    var state = hitRangeManager.weaponState;
-                    float wavechecker_2 = 2 * WaveManager.wave;
-                    hitRangeManager.weaponState = new WeaponState(
-                    HitRange: state.HitRange * wavechecker_2,
-                    FiringInterval: state.FiringInterval,
-                    Attack: state.Attack,
-                    BulletSpeed: state.BulletSpeed
-                    );
-                    ParticleSystem feverInstance = Instantiate(feverParticle);
-                    var feverMat = feverInstance.GetComponent<ParticleSystemRenderer>().material;
-                    feverMat.renderQueue = 3000;
-                    feverInstance.transform.position = new Vector3(0, 0, 0);
-                    feverInstance.Play();
-                    yield return new WaitForSeconds(5.0f);
-                    hitRangeManager.weaponState = new WeaponState(
-                    HitRange: state.HitRange / wavechecker_2,
-                    FiringInterval: state.FiringInterval,
-                    Attack: state.Attack,
-                    BulletSpeed: state.BulletSpeed
-                    );
-                    feverFlag = 0;
+                    //if (weaponShowManager.selectWeaponNumber == 2)
+                    if (kariban == 2)
+                    {
+                        var state = hitRangeManager.weaponState;
+                        float wavechecker_1 = 2 * WaveManager.wave;
+                        hitRangeManager.weaponState = new WeaponState(
+                        HitRange: state.HitRange,
+                        FiringInterval: state.FiringInterval / wavechecker_1,
+                        Attack: state.Attack,
+                        BulletSpeed: state.BulletSpeed
+                        );
+                        ParticleSystem feverInstance = Instantiate(feverParticle);
+                        var feverMat = feverInstance.GetComponent<ParticleSystemRenderer>().material;
+                        feverMat.renderQueue = 3000;
+                        feverInstance.transform.position = new Vector3(0, 0, 0);
+                        feverInstance.Play();
+                        yield return new WaitForSeconds(5.0f);
+                        hitRangeManager.weaponState = new WeaponState(
+                        HitRange: state.HitRange,
+                        FiringInterval: state.FiringInterval * wavechecker_1,
+                        Attack: state.Attack,
+                        BulletSpeed: state.BulletSpeed
+                        );
+                        feverFlag = 0;
+                    }
+                    //if (weaponShowManager.selectWeaponNumber == 3)
+                    if (kariban == 3)
+                    {
+                        var state = hitRangeManager.weaponState;
+                        float wavechecker_2 = 2 * WaveManager.wave;
+                        hitRangeManager.weaponState = new WeaponState(
+                        HitRange: state.HitRange * wavechecker_2,
+                        FiringInterval: state.FiringInterval,
+                        Attack: state.Attack,
+                        BulletSpeed: state.BulletSpeed
+                        );
+                        ParticleSystem feverInstance = Instantiate(feverParticle);
+                        var feverMat = feverInstance.GetComponent<ParticleSystemRenderer>().material;
+                        feverMat.renderQueue = 3000;
+                        feverInstance.transform.position = new Vector3(0, 0, 0);
+                        feverInstance.Play();
+                        yield return new WaitForSeconds(5.0f);
+                        hitRangeManager.weaponState = new WeaponState(
+                        HitRange: state.HitRange / wavechecker_2,
+                        FiringInterval: state.FiringInterval,
+                        Attack: state.Attack,
+                        BulletSpeed: state.BulletSpeed
+                        );
+                        feverFlag = 0;
+                    }
                 }
             }
         }
