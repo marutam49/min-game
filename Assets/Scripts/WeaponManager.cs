@@ -15,7 +15,7 @@ public class WeaponManager : MonoBehaviour
     public int playerWeapon = 0;
     public static int feverFlag = 0;
 
-    private int kariban = 3;
+    private int kariban = 1;
 
     //{hitRange, firingInterval, attack, bulletSpeed}(bulletSpeedは未実装)
     WeaponState[] weaponFirstState = new WeaponState[]{
