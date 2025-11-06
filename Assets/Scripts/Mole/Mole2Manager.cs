@@ -48,6 +48,7 @@ public class Mole2Manager : MonoBehaviour
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
         mole2Renderer = GetComponent<Renderer>();
         sr = GetComponent<SpriteRenderer>();
+        screenShaker = FindAnyObjectByType<ScreenShaker>();
 
         mole2Renderer.sortingOrder = -moleNumber;
         StartCoroutine(MoleMove());

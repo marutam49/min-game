@@ -67,6 +67,7 @@ public class WeaponManager : MonoBehaviour
         {
             yield return new WaitForSeconds(0.01f);
             int feverMax = WaveManager.wave * 2 + 5;
+            float feverDuration = WaveManager.wave * 2 + 3;
             feverCount += 1;
 
             if (feverCount >= 2000)
@@ -94,7 +95,7 @@ public class WeaponManager : MonoBehaviour
                         feverMat.renderQueue = 3000;
                         feverInstance.transform.position = new Vector3(0, 0, 0);
                         feverInstance.Play();
-                        yield return new WaitForSeconds(5.0f);
+                        yield return new WaitForSeconds(feverDuration);
                         hitRangeManager.weaponState = new WeaponState(
                         HitRange: state.HitRange / wavechecker_0,
                         FiringInterval: state.FiringInterval * wavechecker_0,
@@ -119,7 +120,7 @@ public class WeaponManager : MonoBehaviour
                         feverMat.renderQueue = 3000;
                         feverInstance.transform.position = new Vector3(0, 0, 0);
                         feverInstance.Play();
-                        yield return new WaitForSeconds(5.0f);
+                        yield return new WaitForSeconds(feverDuration);
                         hitRangeManager.weaponState = new WeaponState(
                         HitRange: state.HitRange,
                         FiringInterval: state.FiringInterval * wavechecker_1,
@@ -144,7 +145,7 @@ public class WeaponManager : MonoBehaviour
                         feverMat.renderQueue = 3000;
                         feverInstance.transform.position = new Vector3(0, 0, 0);
                         feverInstance.Play();
-                        yield return new WaitForSeconds(5.0f);
+                        yield return new WaitForSeconds(feverDuration);
                         hitRangeManager.weaponState = new WeaponState(
                         HitRange: state.HitRange / wavechecker_2,
                         FiringInterval: state.FiringInterval,

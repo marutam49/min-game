@@ -39,6 +39,7 @@ public class Mole5Manager : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
         mole5Renderer = GetComponent<Renderer>();
+        screenShaker = FindAnyObjectByType<ScreenShaker>();
         mole5Renderer.sortingOrder = -moleNumber;
         //Destroy(gameObject, despawnTime);
         rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
