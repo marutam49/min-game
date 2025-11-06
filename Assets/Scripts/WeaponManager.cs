@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
@@ -65,6 +66,7 @@ public class WeaponManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.01f);
+            int feverMax = WaveManager.wave * 2 + 5;
             feverCount += 1;
 
             if (feverCount >= 2000)
@@ -74,7 +76,7 @@ public class WeaponManager : MonoBehaviour
             }
             else
             {
-                if (feverFlag >= 5)
+                if (feverFlag >= feverMax)
                 {
                     //if (weaponShowManager.selectWeaponNumber == 1)
                     if (kariban == 1)
@@ -99,7 +101,7 @@ public class WeaponManager : MonoBehaviour
                         Attack: state.Attack,
                         BulletSpeed: state.BulletSpeed / wavechecker_0
                         );
-                        feverFlag = 0;
+                        feverFlag -= feverMax;
                     }
                     //if (weaponShowManager.selectWeaponNumber == 2)
                     if (kariban == 2)
@@ -124,7 +126,7 @@ public class WeaponManager : MonoBehaviour
                         Attack: state.Attack,
                         BulletSpeed: state.BulletSpeed
                         );
-                        feverFlag = 0;
+                        feverFlag -= feverMax;
                     }
                     //if (weaponShowManager.selectWeaponNumber == 3)
                     if (kariban == 3)
@@ -149,7 +151,7 @@ public class WeaponManager : MonoBehaviour
                         Attack: state.Attack,
                         BulletSpeed: state.BulletSpeed
                         );
-                        feverFlag = 0;
+                        feverFlag -= feverMax;
                     }
                 }
             }
