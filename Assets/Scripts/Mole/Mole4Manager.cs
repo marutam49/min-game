@@ -22,7 +22,6 @@ public class Mole4Manager : MonoBehaviour
     private ParticleSystem warpParticle;
     [SerializeField]
     private ParticleSystem warpParticle_out;
-
     Renderer mole4Renderer;
 
     int hp = 500;
@@ -38,7 +37,6 @@ public class Mole4Manager : MonoBehaviour
 
     void Start()
     {
-
         rigidbody2D = GetComponent<Rigidbody2D>();
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
         mole4Renderer = GetComponent<Renderer>();

@@ -31,7 +31,7 @@ public class MoleSpawner : MonoBehaviour
             NumberSpawnAtOneTime: 2),
         new WaveState(
             EnemyType: 3,
-            SpawnInterval: 0.7f,
+            SpawnInterval: 0.9f,
             NumberSpawnAtOneTime: 1),
         new WaveState(
             EnemyType: 4,
@@ -39,7 +39,7 @@ public class MoleSpawner : MonoBehaviour
             NumberSpawnAtOneTime: 1),
         new WaveState(
             EnemyType: 5,
-            SpawnInterval: 0.6f,
+            SpawnInterval: 1.3f,
             NumberSpawnAtOneTime: 2),
         new WaveState(
             EnemyType: 3,

@@ -35,7 +35,7 @@ public class Mole5Manager : MonoBehaviour
 
     void Start()
     {
-
+        remainedTimeManager = FindAnyObjectByType<RemainedTimeManager>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
         mole5Renderer = GetComponent<Renderer>();
@@ -114,11 +114,11 @@ public class Mole5Manager : MonoBehaviour
             distanceFromCamera -= 0.05f;
             Vector3 currentPosition = transform.position;
             //端で反転する
-            if (currentPosition.x > 9 || -9 > currentPosition.x)
+            if (currentPosition.x > 12 || -12 > currentPosition.x)
             {
                 rigidbody2D.linearVelocityX = -rigidbody2D.linearVelocityX;
             }
-            if (currentPosition.y > 5 || -5 > currentPosition.y)
+            if (currentPosition.y > 7 || -7 > currentPosition.y)
             {
             rigidbody2D.linearVelocityY = -rigidbody2D.linearVelocityY;
             }

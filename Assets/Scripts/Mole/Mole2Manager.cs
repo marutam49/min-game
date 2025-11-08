@@ -44,6 +44,7 @@ public class Mole2Manager : MonoBehaviour
 
     void Start()
     {
+        remainedTimeManager = FindAnyObjectByType<RemainedTimeManager>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
         mole2Renderer = GetComponent<Renderer>();

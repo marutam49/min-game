@@ -70,6 +70,7 @@ public class WeaponManager : MonoBehaviour
             float feverDuration = WaveManager.wave * 2 + 3;
             feverCount += 1;
 
+            //2000はfeverが0になる制限時間
             if (feverCount >= 2000)
             {
                 feverCount = 0;
@@ -83,7 +84,7 @@ public class WeaponManager : MonoBehaviour
                     if (kariban == 1)
                     {
                         var state = hitRangeManager.weaponState;
-                        float wavechecker_0 = 1 + WaveManager.wave * 0.2f;
+                        float wavechecker_0 = 2 + WaveManager.wave * 0.5f;
                         hitRangeManager.weaponState = new WeaponState(
                         HitRange: state.HitRange * wavechecker_0,
                         FiringInterval: state.FiringInterval / wavechecker_0,
@@ -97,10 +98,10 @@ public class WeaponManager : MonoBehaviour
                         feverInstance.Play();
                         yield return new WaitForSeconds(feverDuration);
                         hitRangeManager.weaponState = new WeaponState(
-                        HitRange: state.HitRange / wavechecker_0,
-                        FiringInterval: state.FiringInterval * wavechecker_0,
+                        HitRange: state.HitRange ,
+                        FiringInterval: state.FiringInterval ,
                         Attack: state.Attack,
-                        BulletSpeed: state.BulletSpeed / wavechecker_0
+                        BulletSpeed: state.BulletSpeed 
                         );
                         feverFlag -= feverMax;
                     }

@@ -36,7 +36,6 @@ public class Mole6Manager : MonoBehaviour
 
     void Start()
     {
-
         rigidbody2D = GetComponent<Rigidbody2D>();
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
         mole6Renderer = GetComponent<Renderer>();
