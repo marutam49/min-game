@@ -124,7 +124,7 @@ public class WeaponManager : MonoBehaviour
                         yield return new WaitForSeconds(feverDuration);
                         hitRangeManager.weaponState = new WeaponState(
                         HitRange: state.HitRange,
-                        FiringInterval: state.FiringInterval * wavechecker_1,
+                        FiringInterval: state.FiringInterval,
                         Attack: state.Attack,
                         BulletSpeed: state.BulletSpeed
                         );
@@ -148,7 +148,7 @@ public class WeaponManager : MonoBehaviour
                         feverInstance.Play();
                         yield return new WaitForSeconds(feverDuration);
                         hitRangeManager.weaponState = new WeaponState(
-                        HitRange: state.HitRange / wavechecker_2,
+                        HitRange: state.HitRange,
                         FiringInterval: state.FiringInterval,
                         Attack: state.Attack,
                         BulletSpeed: state.BulletSpeed
