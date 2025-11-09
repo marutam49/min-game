@@ -49,7 +49,7 @@ public class MoleManager : MonoBehaviour
         System.Random r = new System.Random();
         float moveSelect = (float)(r.NextDouble());
 
-        Debug.Log(moleNumber);
+        //Debug.Log(moleNumber);
 
         moleRenderer.sortingOrder = -moleNumber;
 

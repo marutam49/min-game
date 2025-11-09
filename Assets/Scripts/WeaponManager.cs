@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -61,12 +62,14 @@ public class WeaponManager : MonoBehaviour
     }
 
     public static int feverCount;
+    int feverMax;
     private IEnumerator feverTime()
     {
         while (true)
         {
             yield return new WaitForSeconds(0.01f);
-            int feverMax = WaveManager.wave * 2 + 5;
+            Debug.Log(feverFlag);
+            feverMax = WaveManager.wave * 2 + 5;
             float feverDuration = WaveManager.wave * 2 + 3;
             feverCount += 1;
 
@@ -98,12 +101,12 @@ public class WeaponManager : MonoBehaviour
                         feverInstance.Play();
                         yield return new WaitForSeconds(feverDuration);
                         hitRangeManager.weaponState = new WeaponState(
-                        HitRange: state.HitRange ,
-                        FiringInterval: state.FiringInterval ,
+                        HitRange: state.HitRange,
+                        FiringInterval: state.FiringInterval,
                         Attack: state.Attack,
-                        BulletSpeed: state.BulletSpeed 
+                        BulletSpeed: state.BulletSpeed
                         );
-                        feverFlag -= feverMax;
+                        feverFlag = feverDecrease(feverFlag);
                     }
                     //if (weaponShowManager.selectWeaponNumber == 2)
                     if (kariban == 2)
@@ -128,7 +131,7 @@ public class WeaponManager : MonoBehaviour
                         Attack: state.Attack,
                         BulletSpeed: state.BulletSpeed
                         );
-                        feverFlag -= feverMax;
+                        feverFlag = feverDecrease(feverFlag);
                     }
                     //if (weaponShowManager.selectWeaponNumber == 3)
                     if (kariban == 3)
@@ -153,11 +156,22 @@ public class WeaponManager : MonoBehaviour
                         Attack: state.Attack,
                         BulletSpeed: state.BulletSpeed
                         );
-                        feverFlag -= feverMax;
+                        feverFlag = feverDecrease(feverFlag);
                     }
                 }
             }
         }
+    }
+    private int feverDecrease(int feverFlag)
+    {
+        if (feverFlag > 20)
+            feverFlag = 5;
+        else if (feverFlag > 15)
+            feverFlag = 4;
+        else
+            feverFlag = 2;
+
+        return feverFlag;
     }
 }
 
