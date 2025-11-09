@@ -24,7 +24,7 @@ public class Mole6Manager : MonoBehaviour
     private ParticleSystem warpParticle_out;
     Renderer mole6Renderer;
 
-    int hp = 1000;
+    int hp = 300;
     private float alpha = 1.0f;
 
     //float despawnTime = 3.0f;
@@ -148,11 +148,11 @@ public class Mole6Manager : MonoBehaviour
                 Vector3 currentPosition = transform.position;
                 Vector2 moveDirection = Vector2.zero;
                 //いる方向と逆方向に移動
-                float speedX = (float)(r.NextDouble() * 20 + 20);
+                float speedX = (float)(r.NextDouble() * 20 + 10);
                 if (currentPosition.x > 0)
                     speedX = -speedX;
                 moveDirection.x = speedX;
-                float speedY = (float)(r.NextDouble() * 20 + 20);
+                float speedY = (float)(r.NextDouble() * 20 + 10);
                 if (currentPosition.y > 0)
                     speedY = -speedY;
                 moveDirection.y = speedY;

@@ -147,11 +147,11 @@ public class Mole4Manager : MonoBehaviour
                 Vector3 currentPosition = transform.position;
                 Vector2 moveDirection = Vector2.zero;
                 //いる方向と逆方向に移動
-                float speedX = (float)(r.NextDouble() * 20 + 20);
+                float speedX = (float)(r.NextDouble() * 15 + 5);
                 if (currentPosition.x > 0)
                     speedX = -speedX;
                 moveDirection.x = speedX;
-                float speedY = (float)(r.NextDouble() * 20 + 20);
+                float speedY = (float)(r.NextDouble() * 15 + 5);
                 if (currentPosition.y > 0)
                     speedY = -speedY;
                 moveDirection.y = speedY;
