@@ -142,7 +142,6 @@ public class MoleManager : MonoBehaviour
             {
                 rigidbody2D.linearVelocityY = -rigidbody2D.linearVelocityY;
             }
-            //がくがくしないように入れてみる
         }
 
         Destroy(this.gameObject);
