@@ -12,11 +12,16 @@ public class BulletManager : MonoBehaviour
     HitRangeManager hitRangeManager;
 
     WeaponManager weaponManager;
+    Renderer bulletRenderer;
+    public int bulletNumber;
 
     void Start()
     {
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
         weaponManager = FindAnyObjectByType<WeaponManager>();
+        
+        bulletRenderer = GetComponent<Renderer>();
+        bulletRenderer.sortingOrder = bulletNumber;
         //transform.localScale = new Vector3(5.0f, 5.0f, 1.0f);
         StartCoroutine(BulletMove());
     }
@@ -32,7 +37,7 @@ public class BulletManager : MonoBehaviour
         while (distanceFromCamera <= 15.0f)
         {
             transform.localScale = new Vector3(5 * hitRangeManager.weaponState.HitRange / distanceFromCamera, 5 * hitRangeManager.weaponState.HitRange / distanceFromCamera, 1);
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.005f);
             distanceFromCamera += hitRangeManager.weaponState.BulletSpeed;
         }
 
