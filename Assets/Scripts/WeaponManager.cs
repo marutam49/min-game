@@ -14,10 +14,11 @@ public class WeaponManager : MonoBehaviour
 
     WeaponShowManager weaponShowManager;
 
+
     public int playerWeapon = 0;
     public static int feverFlag = 0;
 
-    private int kariban = 1;
+    //private int  kariban= 1;
 
     //{hitRange, firingInterval, attack, bulletSpeed}(bulletSpeedは未実装)
     WeaponState[] weaponFirstState = new WeaponState[]{
@@ -45,6 +46,7 @@ public class WeaponManager : MonoBehaviour
     void Start()
     {
         bulletManager = FindAnyObjectByType<BulletManager>();
+        weaponShowManager = FindAnyObjectByType<WeaponShowManager>();
         WeaponReset();
         StartCoroutine(feverTime());
     }
@@ -58,7 +60,7 @@ public class WeaponManager : MonoBehaviour
     void WeaponReset()
     {
         //hitRangeManager.weaponState = weaponFirstState[(int)weaponShowManager.selectWeaponNumber - 1];
-        hitRangeManager.weaponState = weaponFirstState[kariban - 1];
+        hitRangeManager.weaponState = weaponFirstState[weaponShowManager.selectWeaponNumber - 1];
     }
 
     public static int feverCount;
@@ -83,8 +85,7 @@ public class WeaponManager : MonoBehaviour
             {
                 if (feverFlag >= feverMax)
                 {
-                    //if (weaponShowManager.selectWeaponNumber == 1)
-                    if (kariban == 1)
+                    if (weaponShowManager.selectWeaponNumber == 1)
                     {
                         var state = hitRangeManager.weaponState;
                         float wavechecker_0 = 2 + WaveManager.wave * 0.5f;
@@ -108,8 +109,7 @@ public class WeaponManager : MonoBehaviour
                         );
                         feverFlag = feverDecrease(feverFlag);
                     }
-                    //if (weaponShowManager.selectWeaponNumber == 2)
-                    if (kariban == 2)
+                    if (weaponShowManager.selectWeaponNumber == 2)
                     {
                         var state = hitRangeManager.weaponState;
                         float wavechecker_1 = 2 * WaveManager.wave;
@@ -133,8 +133,7 @@ public class WeaponManager : MonoBehaviour
                         );
                         feverFlag = feverDecrease(feverFlag);
                     }
-                    //if (weaponShowManager.selectWeaponNumber == 3)
-                    if (kariban == 3)
+                    if (weaponShowManager.selectWeaponNumber == 3)
                     {
                         var state = hitRangeManager.weaponState;
                         float wavechecker_2 = 2 * WaveManager.wave;
