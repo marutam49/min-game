@@ -87,7 +87,7 @@ public class MoleManager : MonoBehaviour
             ScoreManager.score += 5;
             waveManager.enemyBeatNumber += 0.5f;
             LevelManager.exp += 5;
-            Debug.Log(WeaponManager.feverFlag);
+            //Debug.Log(WeaponManager.feverFlag);
             ParticleSystem newParticle = Instantiate(particle2);
             newParticle.transform.position = this.transform.position;
             newParticle.Play();

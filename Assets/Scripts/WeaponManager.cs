@@ -68,7 +68,7 @@ public class WeaponManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.01f);
-            Debug.Log(feverFlag);
+            //Debug.Log(feverFlag);
             feverMax = WaveManager.wave * 2 + 5;
             float feverDuration = WaveManager.wave * 2 + 3;
             feverCount += 1;
