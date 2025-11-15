@@ -150,7 +150,8 @@ public class MoleSpawner : MonoBehaviour
 
     public void WaveUpdate()
     {
-        stateNow = waveFirstState[WaveManager.wave - 1];
+        if(WaveManager.wave < 7)
+            stateNow = waveFirstState[WaveManager.wave - 1];
     }
 }
 

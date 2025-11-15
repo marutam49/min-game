@@ -25,13 +25,38 @@ public class ScoreManager : MonoBehaviour
         {
             gameClearFlag = false;
             StartCoroutine(CalcScore());
+            StartCoroutine(EvaluateScore(score));
         }
     }
-    
+
     IEnumerator CalcScore()
     {
         yield break;
         float Score = remainedTimeManager.remainedTime;
         Debug.Log(Score);
+    }
+
+    //適当な値に上位スコアを設定
+    float first_score = 200;
+    float second_score = 150;
+    float third_score = 100;
+    IEnumerator EvaluateScore(float score)
+    {
+        if (score > first_score)
+        {
+            third_score = second_score;
+            second_score = first_score;
+            first_score = score;
+        }
+        if (score > second_score)
+        {
+            third_score = second_score;
+            second_score = score;
+        }
+        if (score > third_score)
+        {
+            third_score = score;
+        }
+        yield break;
     }
 }
