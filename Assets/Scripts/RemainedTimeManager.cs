@@ -1,6 +1,7 @@
 using System;  
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class RemainedTimeManager : MonoBehaviour
 {
@@ -27,6 +28,10 @@ public class RemainedTimeManager : MonoBehaviour
         string s = remainedSecond.ToString("D2");
         displayMessage = (remainedMinute + ":" + s);
         titleText.text = displayMessage;
+        if (remainedTime < 0)
+        {
+            SceneManager.LoadScene("Gameover");
+        }
     }
 
     public void RemainedTimeDecrease(float decreaseAmount)
