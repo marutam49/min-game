@@ -14,13 +14,11 @@ public class ScoreManager : MonoBehaviour
         scoreDisplay = GetComponent<TextMeshProUGUI>();
         remainedTimeManager = FindAnyObjectByType<RemainedTimeManager>();
     }
-
-
+    bool gameClearFlag = false;
     void Update()
     {
-        bool gameClearFlag = false;
-        scoreDisplay.text = //"score:" + score.ToString();
-        "level:" + LevelManager.level.ToString();
+        //scoreDisplay.text = //"score:" + score.ToString();
+        //"level:" + LevelManager.level.ToString();
         if (WaveManager.wave > 6 && gameClearFlag == false)
         {
             Debug.Log("くぁｗせｄｒｆｔｇｙふじこｌｐ");
