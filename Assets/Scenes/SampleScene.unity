@@ -671,6 +671,7 @@ GameObject:
   - component: {fileID: 259916416}
   - component: {fileID: 259916418}
   - component: {fileID: 259916417}
+  - component: {fileID: 259916420}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -768,7 +769,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitRangeManager: {fileID: 199052850}
   feverParticle: {fileID: 5954485658414803508, guid: 253a23fd238ca3549b81a2b8caa89c46, type: 3}
-  weaponShowManager: {fileID: 2020947130}
   playerWeapon: 0
 --- !u!82 &259916417
 AudioSource:
@@ -978,6 +978,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FeverGauge: {fileID: 1737995412}
   maxfeverPoint: 20
+--- !u!114 &259916420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259916410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f4aa530527e626468139af4dfca63ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Score: 0
 --- !u!1 &276011266
 GameObject:
   m_ObjectHideFlags: 0

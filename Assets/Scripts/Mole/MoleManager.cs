@@ -167,11 +167,13 @@ public class MoleManager : MonoBehaviour
             //端で反転する
             if (currentPosition.x > 10 || -10 > currentPosition.x)
             {
-                rigidbody2D.linearVelocityX = -rigidbody2D.linearVelocityX;
+                //rigidbody2D.linearVelocityX = -rigidbody2D.linearVelocityX;
+                pos.x = - pos.x;
             }
             if (currentPosition.y > 5 || -5 > currentPosition.y)
             {
-                rigidbody2D.linearVelocityY = -rigidbody2D.linearVelocityY;
+                //rigidbody2D.linearVelocityY = -rigidbody2D.linearVelocityY;
+                pos.y = - pos.y;
             }
         }
 
