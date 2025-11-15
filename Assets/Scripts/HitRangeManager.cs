@@ -5,7 +5,7 @@ using UnityEngine;
 public class HitRangeManager : MonoBehaviour
 {
     [SerializeField] BulletSpawner bulletSpawner;
-    [SerializeField] pauseButtonManager pauseButtonManager;
+    [SerializeField] PauseButtonManager PauseButtonManager;
     //public bool doHitDecision = false;
     public WeaponState weaponState;
         
@@ -27,7 +27,7 @@ public class HitRangeManager : MonoBehaviour
         transform.localScale = new Vector3(hitRange, hitRange, hitRange);
 
 
-        if (pauseButtonManager.isPaused == false)
+        if (PauseButtonManager.isPaused == false)
         {
             //クリック時に判定を出せるかの判定
             if (Input.GetMouseButton(0))

@@ -24,7 +24,7 @@ public class Mole6Manager : MonoBehaviour
     private ParticleSystem warpParticle_out;
     Renderer mole6Renderer;
 
-    int hp = 300;
+    int hp = 3;//00;
     private float alpha = 1.0f;
 
     //float despawnTime = 3.0f;

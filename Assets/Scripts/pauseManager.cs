@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class pauseButtonManager : MonoBehaviour
+public class PauseButtonManager : MonoBehaviour
 {
     public GameObject pausePanel;
     public static bool isPaused = false;
