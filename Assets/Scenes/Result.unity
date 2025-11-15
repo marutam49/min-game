@@ -688,12 +688,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'GO HOME
-
-'
+  m_text: "\u30BF\u30A4\u30C8\u30EB\u3078\u623B\u308B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 804d624fc4f48314087b0ec3c04e40f7, type: 2}
-  m_sharedMaterial: {fileID: -3277855701639680259, guid: 804d624fc4f48314087b0ec3c04e40f7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9f67239a71dc4574ea996a8bba49d67f, type: 2}
+  m_sharedMaterial: {fileID: -6449939923382285778, guid: 9f67239a71dc4574ea996a8bba49d67f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -717,8 +715,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -934,7 +932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff933feefea5354f8c5f1edb00699e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 3
+  timeLimit: 5
 --- !u!4 &1832490002
 Transform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 //スコアUIの表示
 public class ScoreManager : MonoBehaviour
@@ -21,6 +23,7 @@ public class ScoreManager : MonoBehaviour
         //"level:" + LevelManager.level.ToString();
         if (WaveManager.wave > 6 && gameClearFlag == false)
         {
+             SceneManager.LoadScene("Result");
             Debug.Log("くぁｗせｄｒｆｔｇｙふじこｌｐ");
             gameClearFlag = true;
             StartCoroutine(CalcScore());
