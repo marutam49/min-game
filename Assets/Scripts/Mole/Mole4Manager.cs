@@ -26,7 +26,7 @@ public class Mole4Manager : MonoBehaviour
     [SerializeField] GameObject Mole4Bullet;
     SpriteRenderer sr;
 
-    int hp = 500;
+    int hp = 5;//00;
     private float alpha = 1.0f;
 
     //float despawnTime = 3.0f;

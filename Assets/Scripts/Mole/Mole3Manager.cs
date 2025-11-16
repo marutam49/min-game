@@ -79,7 +79,7 @@ public class Mole3Manager : MonoBehaviour
         {
             gameObject.GetComponent<Renderer>().material.color = Color.red;
             ScoreManager.score += 5;
-            waveManager.enemyBeatNumber += 0.4f;
+            waveManager.enemyBeatNumber += 25.0f;//0.4f;
             LevelManager.exp += 5;
             ParticleSystem newParticle = Instantiate(particle2);
             newParticle.transform.position = this.transform.position;

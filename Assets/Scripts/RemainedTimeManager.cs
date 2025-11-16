@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class RemainedTimeManager : MonoBehaviour
 {
-    public static string displayMessage = "a";
+    public static string displayMessage = "0";
     public TextMeshProUGUI titleText;
 
     public float remainedTime;
