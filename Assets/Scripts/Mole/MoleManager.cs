@@ -53,7 +53,7 @@ public class MoleManager : MonoBehaviour
 
         moleRenderer.sortingOrder = -moleNumber;
 
-        if (moveSelect >= 0.5)
+        if (moveSelect >= 0.2)
         {
             StartCoroutine(MoleMove1());
             rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
