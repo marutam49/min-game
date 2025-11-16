@@ -23,6 +23,8 @@ public class Mole4Manager : MonoBehaviour
     [SerializeField]
     private ParticleSystem warpParticle_out;
     Renderer mole4Renderer;
+    [SerializeField] GameObject Mole4Bullet;
+    SpriteRenderer sr;
 
     int hp = 500;
     private float alpha = 1.0f;
@@ -40,6 +42,7 @@ public class Mole4Manager : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
         mole4Renderer = GetComponent<Renderer>();
+        sr = GetComponent<SpriteRenderer>();
         mole4Renderer.sortingOrder = -moleNumber;
         //Destroy(gameObject, despawnTime);
         rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
@@ -106,18 +109,34 @@ public class Mole4Manager : MonoBehaviour
         while (distanceFromCamera >= 1.0f)
         {
             float moveSelect = (float)(r.NextDouble());
-            SpriteRenderer sr = GetComponent<SpriteRenderer>();
-            if (moveSelect < 0.25)
+
+            if (moveSelect <= 0.25)
             {
-                ParticleSystem newParticle = Instantiate(warpParticle);
-                //effectsがmoleより前に配置されるようにする。
-                var mat = newParticle.GetComponent<ParticleSystemRenderer>().material;
-                mat.renderQueue = 3100;
-                Color c = sr.material.color;
-                newParticle.transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
-                newParticle.Play();
-                Vector3 movePoint = new Vector3(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), 1.0f);
-                movePoint = Camera.main.ViewportToWorldPoint(movePoint);
+                yield return StartCoroutine(Warp());
+            }
+            else if (moveSelect <= 0.90)
+            {
+                yield return StartCoroutine(Move());
+            }
+            else
+            {
+                yield return StartCoroutine(Attack());
+            }
+        }
+
+
+
+        IEnumerator Warp()
+        {
+            ParticleSystem newParticle = Instantiate(warpParticle);
+            //effectsがmoleより前に配置されるようにする。
+            var mat = newParticle.GetComponent<ParticleSystemRenderer>().material;
+            mat.renderQueue = 3100;
+            Color c = sr.material.color;
+            newParticle.transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+            newParticle.Play();
+            Vector3 movePoint = new Vector3(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), 1.0f);
+            movePoint = Camera.main.ViewportToWorldPoint(movePoint);
                 for (int i = 0; i < 20; i++)
                 {
                     alpha -= 0.05f;
@@ -142,7 +161,7 @@ public class Mole4Manager : MonoBehaviour
                 c.a = alpha;
                 sr.color = c;
             }
-            if (moveSelect >= 0.25)
+            IEnumerator Move()
             {
                 Vector3 currentPosition = transform.position;
                 Vector2 moveDirection = Vector2.zero;
@@ -160,6 +179,13 @@ public class Mole4Manager : MonoBehaviour
                     transform.position += new Vector3(moveDirection.x, moveDirection.y, 0f) * Time.deltaTime;
                     yield return new WaitForSeconds(0.05f);
                 }
+            }
+        IEnumerator Attack(int attackFrequency = 3)
+        {
+            for (int i = 0; i < attackFrequency; i++)
+            {
+                yield return new WaitForSeconds(0.5f);
+                Instantiate(Mole4Bullet, transform.position, Quaternion.identity);
             }
         }
     }
