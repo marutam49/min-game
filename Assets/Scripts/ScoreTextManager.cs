@@ -15,12 +15,12 @@ public class ScoreTextManager : MonoBehaviour
         scoreManager = FindAnyObjectByType<ScoreManager>();
         int scoreint = (int)Math.Ceiling(ScoreManager.score);
         string scoreText = scoreint.ToString();
-        string firstScoreText = scoreManager.first_score.ToString();
+        /*string firstScoreText = scoreManager.first_score.ToString();
         string secondScoreText = scoreManager.second_score.ToString();
         string thirdScoreText = scoreManager.third_score.ToString();
         rank1Text.SetText($"1:{firstScoreText}");
         rank2Text.SetText($"2:{secondScoreText}");
-        rank3Text.SetText($"3:{thirdScoreText}");
+        rank3Text.SetText($"3:{thirdScoreText}");(ぬるぽになっちゃうから一旦コメントアウト)*/
         testText.SetText(scoreText);
     }
 
