@@ -18,12 +18,11 @@ public class Mole2Manager : MonoBehaviour
     [SerializeField]
     [Tooltip("発生させるエフェクト（パーティクル）")]
     private ParticleSystem particle1;
-    [SerializeField]
-    private ParticleSystem particle2;
-    [SerializeField]
-    private ParticleSystem warpParticle;
-    [SerializeField]
-    private ParticleSystem warpParticle_out;
+    [SerializeField] private ParticleSystem particle2;
+    [SerializeField] private ParticleSystem warpParticle;
+    [SerializeField] private ParticleSystem warpParticle_out;
+    [SerializeField] private ParticleSystem attackMotion; 
+
 
     Renderer mole2Renderer;
 
@@ -219,6 +218,12 @@ public class Mole2Manager : MonoBehaviour
 
         IEnumerator Attack(int attackFrequency = 3)
         {
+            ParticleSystem newParticle = Instantiate(attackMotion);
+            var renderer = newParticle.GetComponent<ParticleSystemRenderer>();
+            renderer.material = new Material(renderer.material);
+            renderer.material.renderQueue = 2900;
+            newParticle.transform.position = this.transform.position;
+            newParticle.Play();
             for (int i = 0; i < attackFrequency; i++)
             {
                 yield return new WaitForSeconds(0.5f);

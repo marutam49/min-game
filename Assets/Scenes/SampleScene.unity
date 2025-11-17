@@ -508,7 +508,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpawner: {fileID: 259916415}
-  pauseButtonManager: {fileID: 931983525}
+  PauseButtonManager: {fileID: 0}
 --- !u!212 &199052851
 SpriteRenderer:
   m_ObjectHideFlags: 0
