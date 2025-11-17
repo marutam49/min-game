@@ -17,6 +17,10 @@ public class ScoreManager : MonoBehaviour
         remainedTimeManager = FindAnyObjectByType<RemainedTimeManager>();
     }
     bool gameClearFlag = false;
+    //適当な値に上位スコアを設定
+    public double first_score = 12000;
+    public double second_score = 8000;
+    public double third_score = 4000;
     void Update()
     {
         //scoreDisplay.text = //"score:" + score.ToString();
@@ -30,7 +34,6 @@ public class ScoreManager : MonoBehaviour
             StartCoroutine(EvaluateScore(score));
         }
     }
-
     static public double score;
     IEnumerator CalcScore()
     {
@@ -39,10 +42,7 @@ public class ScoreManager : MonoBehaviour
         yield break;
     }
 
-    //適当な値に上位スコアを設定
-    double first_score = 12000;
-    double second_score = 8000;
-    double third_score = 4000;
+
 
     IEnumerator EvaluateScore(double score)
     {

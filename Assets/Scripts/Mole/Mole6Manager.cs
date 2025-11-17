@@ -37,7 +37,7 @@ public class Mole6Manager : MonoBehaviour
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        sr = GetComponent<SpriteRenderer>();
         mole6Renderer = GetComponent<Renderer>();
         mole6Renderer.sortingOrder = -moleNumber;
         //Destroy(gameObject, despawnTime);
