@@ -65,7 +65,7 @@ public class Mole6Manager : MonoBehaviour
         if (hp <= 0)
         {
             gameObject.GetComponent<Renderer>().material.color = Color.red;
-            ScoreManager.score += 5;
+            //ScoreManager.score += 5;
             waveManager.enemyBeatNumber += 1;
             LevelManager.exp += 5;
             ParticleSystem newParticle = Instantiate(particle2);

@@ -63,7 +63,7 @@ public class Mole2Manager : MonoBehaviour
             rigidbody2D.simulated = false; 
 
             gameObject.GetComponent<Renderer>().material.color = Color.red;
-            ScoreManager.score += 5;
+            //ScoreManager.core += 5;
             waveManager.enemyBeatNumber += 1;
             LevelManager.exp += 5;
             ParticleSystem newParticle = Instantiate(particle2);

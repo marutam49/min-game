@@ -9,7 +9,7 @@ public class ScoreManager : MonoBehaviour
 {
     private TextMeshProUGUI scoreDisplay;
     RemainedTimeManager remainedTimeManager;
-    public static int score = 0;
+
 
     void Start()
     {
@@ -31,20 +31,20 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public float Score;
+    static public double score;
     IEnumerator CalcScore()
     {
-        Score = remainedTimeManager.remainedTime;
-        Debug.Log(Score);
+        score = remainedTimeManager.remainedTime * 100;
+        Debug.Log(score);
         yield break;
     }
 
     //適当な値に上位スコアを設定
-    float first_score = 200;
-    float second_score = 150;
-    float third_score = 100;
+    double first_score = 12000;
+    double second_score = 8000;
+    double third_score = 4000;
 
-    IEnumerator EvaluateScore(float score)
+    IEnumerator EvaluateScore(double score)
     {
         if (score > first_score)
         {

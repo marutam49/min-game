@@ -84,7 +84,7 @@ public class MoleManager : MonoBehaviour
         if (hp <= 0)
         {
             gameObject.GetComponent<Renderer>().material.color = Color.red;
-            ScoreManager.score += 5;
+            //ScoreManager.score += 5;
             if(WaveManager.wave == 1)
                 waveManager.enemyBeatNumber += 5.0f;//0.5f;
             LevelManager.exp += 5;
