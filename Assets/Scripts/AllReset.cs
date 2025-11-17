@@ -7,7 +7,7 @@ public class AllReset : MonoBehaviour
     {
         LevelManager.exp = 0;
         LevelManager.level = 0;
-        //PauseManager.isPaused = false;
+        PauseButtonManager.isPaused = false;
         WaveManager.wave = 1;
         WeaponManager.feverFlag = 0;
         WeaponManager.feverCount =0;

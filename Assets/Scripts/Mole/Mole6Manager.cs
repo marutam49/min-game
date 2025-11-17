@@ -23,6 +23,7 @@ public class Mole6Manager : MonoBehaviour
     [SerializeField]
     private ParticleSystem warpParticle_out;
     Renderer mole6Renderer;
+    SpriteRenderer sr;
 
     int hp = 3;//00;
     private float alpha = 1.0f;
@@ -31,6 +32,7 @@ public class Mole6Manager : MonoBehaviour
 
     public float distanceFromCamera = 3.0f;
     public int moleNumber;
+    [SerializeField] GameObject Mole6Bullet;
 
 
 
@@ -38,6 +40,7 @@ public class Mole6Manager : MonoBehaviour
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
         mole6Renderer = GetComponent<Renderer>();
         mole6Renderer.sortingOrder = -moleNumber;
         //Destroy(gameObject, despawnTime);
@@ -101,14 +104,28 @@ public class Mole6Manager : MonoBehaviour
         }
     }
 
-        IEnumerator MoleMove()
+    IEnumerator MoleMove()
     {
         System.Random r = new System.Random();
         while (distanceFromCamera >= 1.0f)
         {
             float moveSelect = (float)(r.NextDouble());
-            SpriteRenderer sr = GetComponent<SpriteRenderer>();
-            if (moveSelect < 0.25)
+
+
+            if (moveSelect <= 0.25)
+            {
+                yield return StartCoroutine(Warp());
+            }
+            else if (moveSelect <= 0.90)
+            {
+                yield return StartCoroutine(Move());
+            }
+            else
+            {
+                yield return StartCoroutine(Attack());
+            }
+        }
+            IEnumerator Warp()
             {
                 ParticleSystem newParticle = Instantiate(warpParticle);
                 //effectsがmoleより前に配置されるようにする。
@@ -143,7 +160,7 @@ public class Mole6Manager : MonoBehaviour
                 c.a = alpha;
                 sr.color = c;
             }
-            if (moveSelect >= 0.25)
+            IEnumerator Move()
             {
                 Vector3 currentPosition = transform.position;
                 Vector2 moveDirection = Vector2.zero;
@@ -161,6 +178,13 @@ public class Mole6Manager : MonoBehaviour
                     transform.position += new Vector3(moveDirection.x, moveDirection.y, 0f) * Time.deltaTime;
                     yield return new WaitForSeconds(0.05f);
                 }
+            }
+        IEnumerator Attack(int attackFrequency = 5)
+        {
+            for (int i = 0; i < attackFrequency; i++)
+            {
+                yield return new WaitForSeconds(0.3f);
+                Instantiate(Mole6Bullet, transform.position, Quaternion.identity);
             }
         }
     }

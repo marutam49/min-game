@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -180,11 +181,11 @@ public class Mole4Manager : MonoBehaviour
                     yield return new WaitForSeconds(0.05f);
                 }
             }
-        IEnumerator Attack(int attackFrequency = 3)
+        IEnumerator Attack(int attackFrequency = 4)
         {
             for (int i = 0; i < attackFrequency; i++)
             {
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.375f);
                 Instantiate(Mole4Bullet, transform.position, Quaternion.identity);
             }
         }
