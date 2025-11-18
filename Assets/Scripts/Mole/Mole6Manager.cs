@@ -131,7 +131,8 @@ public class Mole6Manager : MonoBehaviour
                 Color c = sr.material.color;
                 newParticle.transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
                 newParticle.Play();
-                Vector3 movePoint = new Vector3(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), 1.0f);
+                Destroy(newParticle,5.0f);
+                Vector3 movePoint = new Vector3(UnityEngine.Random.Range(0.0f, 0.8f), UnityEngine.Random.Range(0.0f, 0.8f), 1.0f);
                 movePoint = Camera.main.ViewportToWorldPoint(movePoint);
                 for (int i = 0; i < 20; i++)
                 {
@@ -147,6 +148,7 @@ public class Mole6Manager : MonoBehaviour
                         mat_2.renderQueue = 3100;
                         newParticle_2.transform.position = movePoint;
                         newParticle_2.Play();
+                        Destroy(newParticle_2,5.0f);
                         transform.position = movePoint;
                         transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
                         float valuableNumber = (float)(r.NextDouble() * 0.2 - 0.1);
@@ -184,6 +186,7 @@ public class Mole6Manager : MonoBehaviour
             renderer.material.renderQueue = 2900;
             newParticle.transform.position = this.transform.position;
             newParticle.Play();
+            Destroy(newParticle,1.5f);
             for (int i = 0; i < attackFrequency; i++)
             {
                 yield return new WaitForSeconds(0.3f);

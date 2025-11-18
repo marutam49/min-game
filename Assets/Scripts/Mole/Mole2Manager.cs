@@ -161,7 +161,7 @@ public class Mole2Manager : MonoBehaviour
 
             Destroy(newParticle.gameObject, 5.0f);
 
-            Vector3 movePoint = new Vector3(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), 1.0f);
+            Vector3 movePoint = new Vector3(UnityEngine.Random.Range(0.0f, 0.8f), UnityEngine.Random.Range(0.0f, 0.8f), 1.0f);
             movePoint = Camera.main.ViewportToWorldPoint(movePoint);
             for (int i = 0; i < 20; i++)
             {
@@ -224,6 +224,7 @@ public class Mole2Manager : MonoBehaviour
             renderer.material.renderQueue = 2900;
             newParticle.transform.position = this.transform.position;
             newParticle.Play();
+            Destroy(newParticle,1.5f);
             for (int i = 0; i < attackFrequency; i++)
             {
                 yield return new WaitForSeconds(0.5f);
