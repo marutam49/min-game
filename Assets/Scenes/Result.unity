@@ -1357,9 +1357,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testText: {fileID: 1645356273}
-  rank1Text: {fileID: 0}
-  rank2Text: {fileID: 0}
-  rank3Text: {fileID: 0}
+  rank1Text: {fileID: 312478660}
+  rank2Text: {fileID: 1396746276}
+  rank3Text: {fileID: 1075916108}
 --- !u!1 &1869764520
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using TMPro;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 //スコアUIの表示
 public class ScoreManager : MonoBehaviour
@@ -18,9 +19,9 @@ public class ScoreManager : MonoBehaviour
     }
     bool gameClearFlag = false;
     //適当な値に上位スコアを設定
-    public double first_score = 12000;
-    public double second_score = 8000;
-    public double third_score = 4000;
+    static public int first_score = 12000;
+    static public int second_score = 8000;
+    static public int third_score = 4000;
     void Update()
     {
         //scoreDisplay.text = //"score:" + score.ToString();
@@ -32,19 +33,23 @@ public class ScoreManager : MonoBehaviour
             gameClearFlag = true;
             StartCoroutine(CalcScore());
             StartCoroutine(EvaluateScore(score));
+            Debug.Log(first_score);
+            Debug.Log(second_score);
+            Debug.Log(third_score);
         }
     }
-    static public double score;
+    static public int score;
     IEnumerator CalcScore()
     {
-        score = remainedTimeManager.remainedTime * 100;
+        float scorefloat = remainedTimeManager.remainedTime * 100;
+        score = (int) Math.Ceiling(scorefloat);
         Debug.Log(score);
         yield break;
     }
 
 
 
-    IEnumerator EvaluateScore(double score)
+    IEnumerator EvaluateScore(int score)
     {
         if (score > first_score)
         {
@@ -52,12 +57,12 @@ public class ScoreManager : MonoBehaviour
             second_score = first_score;
             first_score = score;
         }
-        if (score > second_score)
+        else if (score > second_score)
         {
             third_score = second_score;
             second_score = score;
         }
-        if (score > third_score)
+        else if (score > third_score)
         {
             third_score = score;
         }
