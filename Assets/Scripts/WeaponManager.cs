@@ -42,6 +42,15 @@ public class WeaponManager : MonoBehaviour
         )
     };
 
+    void Awake()
+    {
+        //selectWeaponNumberの保証
+        if(weaponShowManager.selectWeaponNumber != 1 ||
+        weaponShowManager.selectWeaponNumber != 2 ||
+        weaponShowManager.selectWeaponNumber != 3)
+            weaponShowManager.selectWeaponNumber = 1;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -49,11 +58,6 @@ public class WeaponManager : MonoBehaviour
         weaponShowManager = FindAnyObjectByType<WeaponShowManager>();
         WeaponReset();
         StartCoroutine(feverTime());
-        //selectWeaponNumberの保証
-        if(weaponShowManager.selectWeaponNumber != 1 ||
-        weaponShowManager.selectWeaponNumber != 2 ||
-        weaponShowManager.selectWeaponNumber != 3)
-            weaponShowManager.selectWeaponNumber = 1;
     }
 
     // Update is called once per frame

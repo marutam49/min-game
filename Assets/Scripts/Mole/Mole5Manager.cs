@@ -79,7 +79,7 @@ public class Mole5Manager : MonoBehaviour
             gameObject.GetComponent<Renderer>().material.color = Color.red;
             //ScoreManager.score += 5;
             if(WaveManager.wave == 5)
-                waveManager.enemyBeatNumber += 5.0f;//0.2f;
+                waveManager.enemyBeatNumber += 0.2f;
             LevelManager.exp += 5;
             ParticleSystem newParticle = Instantiate(particle2);
             newParticle.transform.position = this.transform.position;
