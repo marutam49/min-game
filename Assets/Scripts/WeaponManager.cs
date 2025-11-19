@@ -77,7 +77,8 @@ public class WeaponManager : MonoBehaviour
             yield return new WaitForSeconds(0.01f);
             //Debug.Log(feverFlag);
             feverMax = WaveManager.wave * 2 + 5;
-            float feverDuration = WaveManager.wave * 2 + 3;
+            //Effectとの兼ね合いで定数に
+            float feverDuration = 5;
             feverCount += 1;
 
             //2000はfeverが0になる制限時間
