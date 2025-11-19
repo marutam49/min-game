@@ -35,21 +35,21 @@ public class WeaponManager : MonoBehaviour
             BulletSpeed: 0.4f
         ),
         new WeaponState(
-            HitRange: 1.5f,
+            HitRange: 1.0f,
             FiringInterval: 1f,
-            Attack: 10,
+            Attack: 15,
             BulletSpeed: 0.10f
         )
     };
 
-    void Awake()
+    /*void Awake()
     {
         //selectWeaponNumberの保証
         if(weaponShowManager.selectWeaponNumber != 1 ||
         weaponShowManager.selectWeaponNumber != 2 ||
         weaponShowManager.selectWeaponNumber != 3)
             weaponShowManager.selectWeaponNumber = 1;
-    }
+    }*/
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -146,11 +146,12 @@ public class WeaponManager : MonoBehaviour
                     if (weaponShowManager.selectWeaponNumber == 3)
                     {
                         var state = hitRangeManager.weaponState;
-                        float wavechecker_2 = 2 * WaveManager.wave;
+                        float wavechecker_2 = 1.2f * WaveManager.wave;
+                        int wavechecker_2_int = (int)Math.Ceiling(wavechecker_2);
                         hitRangeManager.weaponState = new WeaponState(
                         HitRange: state.HitRange * wavechecker_2,
                         FiringInterval: state.FiringInterval,
-                        Attack: state.Attack,
+                        Attack: state.Attack * wavechecker_2_int,
                         BulletSpeed: state.BulletSpeed
                         );
                         ParticleSystem feverInstance = Instantiate(feverParticle);
