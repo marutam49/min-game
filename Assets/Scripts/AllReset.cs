@@ -11,11 +11,13 @@ public class AllReset : MonoBehaviour
         WaveManager.wave = 1;
         WeaponManager.feverFlag = 0;
         WeaponManager.feverCount =0;
+        Time.timeScale = 1f;
+        Debug.Log("Reset");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 }
