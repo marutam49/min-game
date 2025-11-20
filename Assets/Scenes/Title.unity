@@ -366,7 +366,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Spilit Shot
+  m_text: Spirit Shot
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f67239a71dc4574ea996a8bba49d67f, type: 2}
   m_sharedMaterial: {fileID: -6449939923382285778, guid: 9f67239a71dc4574ea996a8bba49d67f, type: 2}
