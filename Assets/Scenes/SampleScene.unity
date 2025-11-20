@@ -2631,7 +2631,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 277, y: 159}
+  m_AnchoredPosition: {x: 350, y: 160}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &865832672
@@ -3865,7 +3865,7 @@ MonoBehaviour:
   titleText: {fileID: 1432139881}
   displayMessage: WAVE:1
   startPosition: {x: 0, y: 0, z: 0}
-  endPosition: {x: -200, y: 180, z: 0}
+  endPosition: {x: -120, y: 150, z: 0}
   startSize: 120
   endSize: 40
   duration: 1
