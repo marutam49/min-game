@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class pauseButtonManager : MonoBehaviour
+public class PauseButtonManager : MonoBehaviour
 {
     public GameObject pausePanel;
-    public static bool isPaused = false;
+    static public bool isPaused = false;
 
     public void PauseGame()
     {

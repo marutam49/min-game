@@ -1,0 +1,23 @@
+using UnityEngine;
+
+public class AllReset : MonoBehaviour
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        LevelManager.exp = 0;
+        LevelManager.level = 0;
+        PauseButtonManager.isPaused = false;
+        WaveManager.wave = 1;
+        WeaponManager.feverFlag = 0;
+        WeaponManager.feverCount =0;
+        Time.timeScale = 1f;
+        Debug.Log("Reset");
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+       
+    }
+}

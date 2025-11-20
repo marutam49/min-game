@@ -12,6 +12,8 @@ public class Mole5Manager : MonoBehaviour
 
     Rigidbody2D rigidbody2D;
     WeaponManager weaponManager;
+    ScreenShaker screenShaker;
+    RemainedTimeManager remainedTimeManager;
 
     [SerializeField]
     [Tooltip("発生させるエフェクト（パーティクル）")]
@@ -33,14 +35,26 @@ public class Mole5Manager : MonoBehaviour
 
     void Start()
     {
-
+        remainedTimeManager = FindAnyObjectByType<RemainedTimeManager>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
         mole5Renderer = GetComponent<Renderer>();
+        screenShaker = FindAnyObjectByType<ScreenShaker>();
         mole5Renderer.sortingOrder = -moleNumber;
-        //Destroy(gameObject, despawnTime);
-        rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
-        StartCoroutine(MoleMove());
+        System.Random r = new System.Random();
+       float moveSelect = (float)(r.NextDouble());
+
+        //Debug.Log(moleNumber);
+
+        if (moveSelect >= 0.1)
+        {
+            StartCoroutine(MoleMove1());
+            rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
+        }
+        else
+        {
+            StartCoroutine(MoleMove2());
+        }
     }
 
 
@@ -63,10 +77,10 @@ public class Mole5Manager : MonoBehaviour
         if (hp <= 0)
         {
             gameObject.GetComponent<Renderer>().material.color = Color.red;
-            ScoreManager.score += 5;
-            waveManager.enemyBeatNumber += 0.1f;
+            //ScoreManager.score += 5;
+            if(WaveManager.wave == 5)
+                waveManager.enemyBeatNumber += 0.2f;
             LevelManager.exp += 5;
-            WeaponManager.feverFlag += 1;
             ParticleSystem newParticle = Instantiate(particle2);
             newParticle.transform.position = this.transform.position;
             newParticle.Play();
@@ -92,6 +106,7 @@ public class Mole5Manager : MonoBehaviour
             {
                 //gameObject.GetComponent<Renderer>().material.color = Color.yellow;
                 hp -= hitRangeManager.weaponState.Attack;
+                WeaponManager.feverFlag += 1;
                 //gameObject.GetComponent<Renderer>().material.color = Color.white;
                 Destroy(collider.gameObject);
                 ParticleSystem newParticle = Instantiate(particle1);
@@ -102,7 +117,7 @@ public class Mole5Manager : MonoBehaviour
         }
     }
 
-    IEnumerator MoleMove()
+    IEnumerator MoleMove1()
     {
         while (distanceFromCamera >= 1.0f)
         {
@@ -111,7 +126,7 @@ public class Mole5Manager : MonoBehaviour
             distanceFromCamera -= 0.05f;
             Vector3 currentPosition = transform.position;
             //端で反転する
-            if (currentPosition.x > 9 || -9 > currentPosition.x)
+            if (currentPosition.x > 10 || -10 > currentPosition.x)
             {
                 rigidbody2D.linearVelocityX = -rigidbody2D.linearVelocityX;
             }
@@ -122,5 +137,43 @@ public class Mole5Manager : MonoBehaviour
         }
 
         Destroy(this.gameObject);
+
+        //remainedTimeManager.RemainedTimeDecrease(1.0f);
+        screenShaker.Shake();
+        remainedTimeManager.remainedTime -= 1;
+    }
+    IEnumerator MoleMove2()
+    {
+        Vector2 center = new Vector2(transform.position.x + Random.Range(-3f, 3f), transform.position.y + Random.Range(-3f, 3f));
+        float angleSpeed = Random.Range(-4f, 4f);
+        float radius = Random.Range(1f, 3f);
+        float angle = Random.Range(0f, 2 * Mathf.PI);
+        while (distanceFromCamera >= 1.0f)
+        {
+            transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
+            //spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1 - distanceFromCamera * 0.02f);
+            angle += angleSpeed * Time.deltaTime;
+            Vector2 pos = center + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius;
+            transform.position = pos;
+            yield return new WaitForSeconds(0.01f);
+            distanceFromCamera -= 0.05f;
+            Vector3 currentPosition = transform.position;
+            //端で反転する
+            if (currentPosition.x > 8 || -8 > currentPosition.x)
+            {
+                //rigidbody2D.linearVelocityX = -rigidbody2D.linearVelocityX;
+                pos.x = - pos.x;
+            }
+            if (currentPosition.y > 4 || -4 > currentPosition.y)
+            {
+                //rigidbody2D.linearVelocityY = -rigidbody2D.linearVelocityY;
+                pos.y = - pos.y;
+            }
+        }
+
+        Destroy(this.gameObject);
+        //remainedTimeManager.RemainedTimeDecrease(1.0f);
+        screenShaker.Shake();
+        remainedTimeManager.remainedTime -= 1;
     }
 }

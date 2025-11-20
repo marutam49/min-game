@@ -1,17 +1,18 @@
 using System;  
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class RemainedTimeManager : MonoBehaviour
 {
-    public static string displayMessage = "a";
+    public static string displayMessage = "0";
     public TextMeshProUGUI titleText;
 
     public float remainedTime;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        remainedTime = 180;
+        remainedTime = 300;
     }
 
     // Update is called once per frame
@@ -27,6 +28,10 @@ public class RemainedTimeManager : MonoBehaviour
         string s = remainedSecond.ToString("D2");
         displayMessage = (remainedMinute + ":" + s);
         titleText.text = displayMessage;
+        if (remainedTime < 0)
+        {
+            SceneManager.LoadScene("Gameover");
+        }
     }
 
     public void RemainedTimeDecrease(float decreaseAmount)

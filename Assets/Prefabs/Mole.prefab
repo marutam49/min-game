@@ -106,7 +106,7 @@ MonoBehaviour:
   particle1: {fileID: 7284106743644514584, guid: 19112a4fc4c3e8c4cb44db0781fa8a93, type: 3}
   particle2: {fileID: 939698731146127878, guid: d07062782ffdd414580ecb7f3e3f0181, type: 3}
   distanceFromCamera: 15
-  moleNumber: 9
+  moleNumber: 7
 --- !u!58 &4929195219332641223
 CircleCollider2D:
   m_ObjectHideFlags: 0

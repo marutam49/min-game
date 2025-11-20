@@ -25,7 +25,6 @@ public class WaveManager : MonoBehaviour
     public void WaveAdd()
     {
         wave += 1;
-        Debug.Log(wave);
         moleSpawner.WaveUpdate();
         enemyBeatNumber = 0;
         if(wave % 2 == 1)

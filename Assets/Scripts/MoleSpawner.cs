@@ -31,15 +31,15 @@ public class MoleSpawner : MonoBehaviour
             NumberSpawnAtOneTime: 2),
         new WaveState(
             EnemyType: 3,
-            SpawnInterval: 0.7f,
-            NumberSpawnAtOneTime: 2),
+            SpawnInterval: 0.9f,
+            NumberSpawnAtOneTime: 1),
         new WaveState(
             EnemyType: 4,
             SpawnInterval: 0.3f,
-            NumberSpawnAtOneTime: 2),
+            NumberSpawnAtOneTime: 1),
         new WaveState(
             EnemyType: 5,
-            SpawnInterval: 0.3f,
+            SpawnInterval: 1.3f,
             NumberSpawnAtOneTime: 2),
         new WaveState(
             EnemyType: 3,
@@ -150,7 +150,8 @@ public class MoleSpawner : MonoBehaviour
 
     public void WaveUpdate()
     {
-        stateNow = waveFirstState[WaveManager.wave - 1];
+        if(WaveManager.wave < 7)
+            stateNow = waveFirstState[WaveManager.wave - 1];
     }
 }
 

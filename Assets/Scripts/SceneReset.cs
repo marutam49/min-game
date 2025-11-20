@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class reset_script : MonoBehaviour
 {
-    private float counttime = 0.0f;//時間をはかる
-    public float timeLimit = 30.0f;//制限時間
-
+    private float counttime = 0.0f;
+    public float timeLimit = 30.0f;
     void Start()
     {
         
@@ -16,12 +15,12 @@ public class reset_script : MonoBehaviour
 
     void Update()
     {
-        counttime += Time.deltaTime;//マイフレーム事にかかった時間を足している
+        counttime += Time.deltaTime;
 
 
         if(counttime > timeLimit)
         {
-            SceneManager.LoadScene("Title");//指定した時間が過ぎたらシーン遷移。("")の中に遷移先のシーンの名前をいれる。
+            SceneManager.LoadScene("Title");
         }
 
     }

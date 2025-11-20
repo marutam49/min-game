@@ -24,6 +24,7 @@ public class MoleManager : MonoBehaviour
 
     RemainedTimeManager remainedTimeManager;
     ScreenShaker screenShaker;
+    FeverGaugeController feverGaugeController;
 
     int hp = 10;
 
@@ -33,7 +34,6 @@ public class MoleManager : MonoBehaviour
 
     public int moleNumber;
 
-
     void Start()
     {
         remainedTimeManager = FindAnyObjectByType<RemainedTimeManager>();
@@ -42,16 +42,18 @@ public class MoleManager : MonoBehaviour
         moleRenderer = GetComponent<Renderer>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         screenShaker = FindAnyObjectByType<ScreenShaker>();
+        feverGaugeController = FindAnyObjectByType<FeverGaugeController>();
+
         //Destroy(gameObject, despawnTime);
         //rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
         System.Random r = new System.Random();
         float moveSelect = (float)(r.NextDouble());
 
-        Debug.Log(moleNumber);
+        //Debug.Log(moleNumber);
 
         moleRenderer.sortingOrder = -moleNumber;
 
-        if (moveSelect >= 0.5)
+        if (moveSelect >= 0.2)
         {
             StartCoroutine(MoleMove1());
             rigidbody2D.linearVelocity = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
@@ -82,11 +84,11 @@ public class MoleManager : MonoBehaviour
         if (hp <= 0)
         {
             gameObject.GetComponent<Renderer>().material.color = Color.red;
-            ScoreManager.score += 5;
-            waveManager.enemyBeatNumber += 0.5f;
+            //ScoreManager.score += 5;
+            if(WaveManager.wave == 1)
+                waveManager.enemyBeatNumber += 0.5f;
             LevelManager.exp += 5;
-            WeaponManager.feverFlag += 1;
-            Debug.Log(WeaponManager.feverFlag);
+            //Debug.Log(WeaponManager.feverFlag);
             ParticleSystem newParticle = Instantiate(particle2);
             newParticle.transform.position = this.transform.position;
             newParticle.Play();
@@ -112,6 +114,7 @@ public class MoleManager : MonoBehaviour
             {
                 //gameObject.GetComponent<Renderer>().material.color = Color.yellow;
                 hp -= hitRangeManager.weaponState.Attack;
+                WeaponManager.feverFlag += 1;
                 //gameObject.GetComponent<Renderer>().material.color = Color.white;
                 Destroy(collider.gameObject);
                 ParticleSystem newParticle = Instantiate(particle1);
@@ -132,7 +135,7 @@ public class MoleManager : MonoBehaviour
             distanceFromCamera -= 0.05f;
             Vector3 currentPosition = transform.position;
             //端で反転する
-            if (currentPosition.x > 9 || -9 > currentPosition.x)
+            if (currentPosition.x > 10 || -10 > currentPosition.x)
             {
                 rigidbody2D.linearVelocityX = -rigidbody2D.linearVelocityX;
             }
@@ -163,18 +166,21 @@ public class MoleManager : MonoBehaviour
             distanceFromCamera -= 0.05f;
             Vector3 currentPosition = transform.position;
             //端で反転する
-            if (currentPosition.x > 9 || -9 > currentPosition.x)
+            if (currentPosition.x > 8 || -8 > currentPosition.x)
             {
-                rigidbody2D.linearVelocityX = -rigidbody2D.linearVelocityX;
+                //rigidbody2D.linearVelocityX = -rigidbody2D.linearVelocityX;
+                pos.x = - pos.x;
             }
-            if (currentPosition.y > 5 || -5 > currentPosition.y)
+            if (currentPosition.y > 4 || -4 > currentPosition.y)
             {
-                rigidbody2D.linearVelocityY = -rigidbody2D.linearVelocityY;
+                //rigidbody2D.linearVelocityY = -rigidbody2D.linearVelocityY;
+                pos.y = - pos.y;
             }
         }
 
         Destroy(this.gameObject);
-        remainedTimeManager.RemainedTimeDecrease(1.0f);
+        //remainedTimeManager.RemainedTimeDecrease(1.0f);
         screenShaker.Shake();
+        remainedTimeManager.remainedTime -= 1;
     }
 }

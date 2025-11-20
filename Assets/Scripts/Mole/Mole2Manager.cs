@@ -12,16 +12,17 @@ public class Mole2Manager : MonoBehaviour
     WeaponManager weaponManager;
 
     Rigidbody2D rigidbody2D;
+    ScreenShaker screenShaker;
+    RemainedTimeManager remainedTimeManager;
 
     [SerializeField]
     [Tooltip("発生させるエフェクト（パーティクル）")]
     private ParticleSystem particle1;
-    [SerializeField]
-    private ParticleSystem particle2;
-    [SerializeField]
-    private ParticleSystem warpParticle;
-    [SerializeField]
-    private ParticleSystem warpParticle_out;
+    [SerializeField] private ParticleSystem particle2;
+    [SerializeField] private ParticleSystem warpParticle;
+    [SerializeField] private ParticleSystem warpParticle_out;
+    [SerializeField] private ParticleSystem attackMotion; 
+
 
     Renderer mole2Renderer;
 
@@ -29,7 +30,7 @@ public class Mole2Manager : MonoBehaviour
     [SerializeField] GameObject Mole2Bullet;
 
 
-    int hp = 150;
+    int hp = 50;
 
     //float despawnTime = 3.0f;
 
@@ -42,10 +43,12 @@ public class Mole2Manager : MonoBehaviour
 
     void Start()
     {
+        remainedTimeManager = FindAnyObjectByType<RemainedTimeManager>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         hitRangeManager = FindAnyObjectByType<HitRangeManager>();
         mole2Renderer = GetComponent<Renderer>();
         sr = GetComponent<SpriteRenderer>();
+        screenShaker = FindAnyObjectByType<ScreenShaker>();
 
         mole2Renderer.sortingOrder = -moleNumber;
         StartCoroutine(MoleMove());
@@ -60,10 +63,9 @@ public class Mole2Manager : MonoBehaviour
             rigidbody2D.simulated = false; 
 
             gameObject.GetComponent<Renderer>().material.color = Color.red;
-            ScoreManager.score += 5;
+            //ScoreManager.core += 5;
             waveManager.enemyBeatNumber += 1;
             LevelManager.exp += 5;
-            WeaponManager.feverFlag += 1;
             ParticleSystem newParticle = Instantiate(particle2);
             newParticle.transform.position = this.transform.position;
             newParticle.Play();
@@ -85,6 +87,7 @@ public class Mole2Manager : MonoBehaviour
             if (-0.4f < bulletManager.distanceFromCamera - distanceFromCamera && bulletManager.distanceFromCamera - distanceFromCamera < 0.4f)
             {
                 hp -= hitRangeManager.weaponState.Attack;
+                WeaponManager.feverFlag += 1;
                 Destroy(collider.gameObject);
                 // ParticleSystem newParticle = Instantiate(particle1);
                 // newParticle.transform.position = this.transform.position;
@@ -97,6 +100,10 @@ public class Mole2Manager : MonoBehaviour
                 newParticle.transform.position = this.transform.position;
                 newParticle.Play();
                 Destroy(newParticle.gameObject, 5.0f);
+
+                        //remainedTimeManager.RemainedTimeDecrease(1.0f);
+                screenShaker.Shake();
+                remainedTimeManager.remainedTime -= 1;
 
             }
         }
@@ -154,7 +161,7 @@ public class Mole2Manager : MonoBehaviour
 
             Destroy(newParticle.gameObject, 5.0f);
 
-            Vector3 movePoint = new Vector3(UnityEngine.Random.Range(0.0f, 1.0f), UnityEngine.Random.Range(0.0f, 1.0f), 1.0f);
+            Vector3 movePoint = new Vector3(UnityEngine.Random.Range(0.0f, 0.8f), UnityEngine.Random.Range(0.0f, 0.8f), 1.0f);
             movePoint = Camera.main.ViewportToWorldPoint(movePoint);
             for (int i = 0; i < 20; i++)
             {
@@ -211,6 +218,13 @@ public class Mole2Manager : MonoBehaviour
 
         IEnumerator Attack(int attackFrequency = 3)
         {
+            ParticleSystem newParticle = Instantiate(attackMotion);
+            var renderer = newParticle.GetComponent<ParticleSystemRenderer>();
+            renderer.material = new Material(renderer.material);
+            renderer.material.renderQueue = 2900;
+            newParticle.transform.position = this.transform.position;
+            newParticle.Play();
+            Destroy(newParticle,1.5f);
             for (int i = 0; i < attackFrequency; i++)
             {
                 yield return new WaitForSeconds(0.5f);
