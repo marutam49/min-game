@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8120834273244825184}
   - component: {fileID: 8754373609540508165}
   - component: {fileID: -8971079251701912964}
-  - component: {fileID: -1200993082704160241}
   - component: {fileID: 8893382359280553529}
+  - component: {fileID: 3874312184201523334}
   m_Layer: 0
   m_Name: Mole4
   m_TagString: Untagged
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 2924560213867061927, guid: 24b7128238b24234db93537d0e95df03, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,8 +117,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &-1200993082704160241
-CircleCollider2D:
+--- !u!114 &8893382359280553529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5448592771928907189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e8b28538007c134a9641f05cb0414fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveManager: {fileID: 0}
+  particle1: {fileID: 7284106743644514584, guid: 19112a4fc4c3e8c4cb44db0781fa8a93, type: 3}
+  particle2: {fileID: 939698731146127878, guid: d07062782ffdd414580ecb7f3e3f0181, type: 3}
+  warpParticle: {fileID: 8414934701545360307, guid: a3c3f9d6bc6501449845ff1cfa2666c3, type: 3}
+  warpParticle_out: {fileID: 519696140770323664, guid: 586c2a52815e4c142bba65c378bada4a, type: 3}
+  attackMotion: {fileID: 8845841504134424729, guid: c26921c861e81144d9ba747f6e61d966, type: 3}
+  Mole4Bullet: {fileID: 4662252213854454840, guid: 1e5335f83efd3b345953d9f9d4e3676f, type: 3}
+  distanceFromCamera: 10
+  moleNumber: 0
+--- !u!61 &3874312184201523334
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -151,26 +172,15 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.21133333}
-  m_Radius: 0.5
---- !u!114 &8893382359280553529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5448592771928907189}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e8b28538007c134a9641f05cb0414fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveManager: {fileID: 0}
-  particle1: {fileID: 7284106743644514584, guid: 19112a4fc4c3e8c4cb44db0781fa8a93, type: 3}
-  particle2: {fileID: 939698731146127878, guid: d07062782ffdd414580ecb7f3e3f0181, type: 3}
-  warpParticle: {fileID: 8414934701545360307, guid: a3c3f9d6bc6501449845ff1cfa2666c3, type: 3}
-  warpParticle_out: {fileID: 519696140770323664, guid: 586c2a52815e4c142bba65c378bada4a, type: 3}
-  attackMotion: {fileID: 8845841504134424729, guid: c26921c861e81144d9ba747f6e61d966, type: 3}
-  Mole4Bullet: {fileID: 4662252213854454840, guid: 1e5335f83efd3b345953d9f9d4e3676f, type: 3}
-  distanceFromCamera: 10
-  moleNumber: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.34, y: 3.78}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2.34, y: 3.78}
+  m_EdgeRadius: 0

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 6672033156744937443}
   - component: {fileID: 449780585019036326}
   - component: {fileID: 1434095518446366953}
-  - component: {fileID: 7063746850800445142}
   - component: {fileID: 516737606705446578}
+  - component: {fileID: 5940116924175695284}
   m_Layer: 0
   m_Name: Mole5
   m_TagString: Untagged
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 5187055309223883602, guid: 0a595a26e1cb4854f8896703a7e7638b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -117,8 +117,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &7063746850800445142
-CircleCollider2D:
+--- !u!114 &516737606705446578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8778741947176210695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a493f668d50a141ba603615de23969, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveManager: {fileID: 0}
+  particle1: {fileID: 7284106743644514584, guid: 19112a4fc4c3e8c4cb44db0781fa8a93, type: 3}
+  particle2: {fileID: 939698731146127878, guid: d07062782ffdd414580ecb7f3e3f0181, type: 3}
+  distanceFromCamera: 15
+  moleNumber: 0
+--- !u!70 &5940116924175695284
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -152,21 +169,5 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
---- !u!114 &516737606705446578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8778741947176210695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46a493f668d50a141ba603615de23969, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waveManager: {fileID: 0}
-  particle1: {fileID: 7284106743644514584, guid: 19112a4fc4c3e8c4cb44db0781fa8a93, type: 3}
-  particle2: {fileID: 939698731146127878, guid: d07062782ffdd414580ecb7f3e3f0181, type: 3}
-  distanceFromCamera: 15
-  moleNumber: 0
+  m_Size: {x: 1.09, y: 2}
+  m_Direction: 0
