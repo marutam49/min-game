@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u30A2\u30B5\u30EB\u30C8\u30E9\u30A4\u30D5\u30EB\uFF08\u6B66\u5668\u8AAC\u660E\uFF09"
+  m_text: "\u30A2\u30B5\u30EB\u30C8\u30E9\u30A4\u30D5\u30EB\n\u30D0\u30E9\u30F3\u30B9\u304C\u3044\u3044\u3002\n\u4E00\u822C\u7684\u306A\u6B66\u5668\u3002"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f67239a71dc4574ea996a8bba49d67f, type: 2}
   m_sharedMaterial: {fileID: -6449939923382285778, guid: 9f67239a71dc4574ea996a8bba49d67f, type: 2}
@@ -203,8 +203,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -691,8 +691,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: 100}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 200, y: 100}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &427281982
 MonoBehaviour:
@@ -714,7 +714,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u30ED\u30B1\u30C3\u30C8\u30E9\u30F3\u30C1\u30E3\u30FC\uFF08\u6B66\u5668\u8AAC\u660E\uFF09"
+  m_text: "\u30ED\u30B1\u30C3\u30C8\u30E9\u30F3\u30C1\u30E3\u30FC\n\u666E\u901A\u306E\u706B\u529B\u3058\u3083\u6E80\u8DB3\u3067\u304D\u306A\u3044\u4EBA\u306B\u3002"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f67239a71dc4574ea996a8bba49d67f, type: 2}
   m_sharedMaterial: {fileID: -6449939923382285778, guid: 9f67239a71dc4574ea996a8bba49d67f, type: 2}
@@ -741,8 +741,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2730,7 +2730,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u30B5\u30D6\u30DE\u30B7\u30F3\u30AC\u30F3\uFF08\u6B66\u5668\u8AAC\u660E\uFF09"
+  m_text: "\u30B5\u30D6\u30DE\u30B7\u30F3\u30AC\u30F3\n\u9023\u5C04\u529B\u304C\u9AD8\u3044\u3002\n\u9023\u5C04\u306F\u697D\u3057\u3044\u3002"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9f67239a71dc4574ea996a8bba49d67f, type: 2}
   m_sharedMaterial: {fileID: -6449939923382285778, guid: 9f67239a71dc4574ea996a8bba49d67f, type: 2}
@@ -2757,8 +2757,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
