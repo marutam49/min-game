@@ -506,8 +506,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u30BF\u30A4\u30C8\u30EB\n\u3078\u623B\u308B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9f67239a71dc4574ea996a8bba49d67f, type: 2}
-  m_sharedMaterial: {fileID: -6449939923382285778, guid: 9f67239a71dc4574ea996a8bba49d67f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6ff63b6ae97ed0a49a0db133b0f6578c, type: 2}
+  m_sharedMaterial: {fileID: 4782771241712191022, guid: 6ff63b6ae97ed0a49a0db133b0f6578c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -847,7 +847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff933feefea5354f8c5f1edb00699e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLimit: 5
+  timeLimit: 15
 --- !u!4 &1480703196
 Transform:
   m_ObjectHideFlags: 0
@@ -997,8 +997,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Game Over
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 9f67239a71dc4574ea996a8bba49d67f, type: 2}
-  m_sharedMaterial: {fileID: -6449939923382285778, guid: 9f67239a71dc4574ea996a8bba49d67f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6ff63b6ae97ed0a49a0db133b0f6578c, type: 2}
+  m_sharedMaterial: {fileID: 4782771241712191022, guid: 6ff63b6ae97ed0a49a0db133b0f6578c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

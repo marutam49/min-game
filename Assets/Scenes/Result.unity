@@ -1802,15 +1802,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Thank you for playing!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 804d624fc4f48314087b0ec3c04e40f7, type: 2}
-  m_sharedMaterial: {fileID: -3277855701639680259, guid: 804d624fc4f48314087b0ec3c04e40f7, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9f67239a71dc4574ea996a8bba49d67f, type: 2}
+  m_sharedMaterial: {fileID: -6449939923382285778, guid: 9f67239a71dc4574ea996a8bba49d67f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279177465
-  m_fontColor: {r: 0.9748427, g: 0.061206, b: 0.05824513, a: 1}
+    rgba: 4278190439
+  m_fontColor: {r: 0.40251565, g: 0.0047354787, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
