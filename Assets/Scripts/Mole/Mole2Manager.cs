@@ -30,7 +30,7 @@ public class Mole2Manager : MonoBehaviour
     [SerializeField] GameObject Mole2Bullet;
 
 
-    int hp = 75;
+    int hp = 100;
 
     //float despawnTime = 3.0f;
 
