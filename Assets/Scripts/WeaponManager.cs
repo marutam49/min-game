@@ -149,8 +149,8 @@ public class WeaponManager : MonoBehaviour
                         float wavechecker_2 = 1.2f * WaveManager.wave;
                         int wavechecker_2_int = (int)Math.Ceiling(wavechecker_2);
                         hitRangeManager.weaponState = new WeaponState(
-                        HitRange: state.HitRange * wavechecker_2,
-                        FiringInterval: state.FiringInterval,
+                        HitRange: state.HitRange ,
+                        FiringInterval: state.FiringInterval / wavechecker_2,
                         Attack: state.Attack * wavechecker_2_int,
                         BulletSpeed: state.BulletSpeed
                         );
