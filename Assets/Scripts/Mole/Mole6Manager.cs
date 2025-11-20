@@ -150,7 +150,7 @@ public class Mole6Manager : MonoBehaviour
                         newParticle_2.Play();
                         Destroy(newParticle_2,5.0f);
                         transform.position = movePoint;
-                        transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
+                        transform.localScale = new Vector3(15 / distanceFromCamera, 15 / distanceFromCamera, 1);
                         float valuableNumber = (float)(r.NextDouble() * 0.2 - 0.1);
                         distanceFromCamera += valuableNumber;
                     }

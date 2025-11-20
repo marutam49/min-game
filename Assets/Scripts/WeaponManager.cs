@@ -30,15 +30,15 @@ public class WeaponManager : MonoBehaviour
         ),
         new WeaponState(
             HitRange: 0.1f,
-            FiringInterval: 0.10f,
+            FiringInterval: 0.15f,
             Attack: 10,
             BulletSpeed: 0.4f
         ),
         new WeaponState(
-            HitRange: 1.0f,
-            FiringInterval: 1f,
-            Attack: 15,
-            BulletSpeed: 0.10f
+            HitRange: 0.5f,
+            FiringInterval: 0.5f,
+            Attack: 20,
+            BulletSpeed: 0.25f
         )
     };
 

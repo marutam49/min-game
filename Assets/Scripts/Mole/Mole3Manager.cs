@@ -122,7 +122,7 @@ public class Mole3Manager : MonoBehaviour
     {
         while (distanceFromCamera >= 1.0f)
         {
-            transform.localScale = new Vector3(5 / distanceFromCamera, 5 / distanceFromCamera, 1);
+            transform.localScale = new Vector3(4 / distanceFromCamera, 4 / distanceFromCamera, 1);
             yield return new WaitForSeconds(0.01f);
             distanceFromCamera -= 0.05f;
             Vector3 currentPosition = transform.position;
@@ -151,7 +151,7 @@ public class Mole3Manager : MonoBehaviour
         float angle = Random.Range(0f, 2 * Mathf.PI);
         while (distanceFromCamera >= 1.0f)
         {
-            transform.localScale = new Vector3(30 / distanceFromCamera, 30 / distanceFromCamera, 1);
+            transform.localScale = new Vector3(4 / distanceFromCamera, 4 / distanceFromCamera, 1);
             //spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 1 - distanceFromCamera * 0.02f);
             angle += angleSpeed * Time.deltaTime;
             Vector2 pos = center + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * radius;
