@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,8 +9,7 @@ public class Mole4Manager : MonoBehaviour
     public WaveManager waveManager;
 
     HitRangeManager hitRangeManager;
-
-    Rigidbody2D rigidbody2D;
+    new Rigidbody2D rigidbody2D;
     WeaponManager weaponManager;
 
     [SerializeField]
