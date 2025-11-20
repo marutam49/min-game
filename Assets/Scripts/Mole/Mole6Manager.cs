@@ -22,7 +22,7 @@ public class Mole6Manager : MonoBehaviour
     Renderer mole6Renderer;
     SpriteRenderer sr;
 
-    int hp = 300;
+    int hp = 450;
     private float alpha = 1.0f;
 
     //float despawnTime = 3.0f;

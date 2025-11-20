@@ -37,7 +37,7 @@ public class WeaponManager : MonoBehaviour
         new WeaponState(
             HitRange: 0.5f,
             FiringInterval: 0.5f,
-            Attack: 20,
+            Attack: 25,
             BulletSpeed: 0.25f
         )
     };
